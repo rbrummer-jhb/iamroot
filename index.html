@@ -46,7 +46,7 @@
 <li>
 <p>License Terms</p>
 <ul>
-<li>Tick <strong>I accept the license terms and Privacy Statment</strong> &gt;</li>
+<li>Tick <strong>I accept the license terms and Privacy Statement</strong> &gt;</li>
 <li><strong>Next</strong> &gt;</li>
 </ul>
 </li>
@@ -59,10 +59,14 @@
 </li>
 <li>
 <p>Feature Selection</p>
+<ul>
+<li>
 <blockquote>
 <p>✓ <strong>Database Engine Services</strong></p>
 </blockquote>
-<p><strong>Next</strong> &gt;</p>
+</li>
+<li><strong>Next</strong> &gt;</li>
+</ul>
 </li>
 <li>
 <p>Instance Configuration</p>
@@ -125,17 +129,21 @@
 </ol>
 <p>You can close all open windows now.<br>
 You’ll now be launching <strong>Microsoft SQL Server Management Studio</strong> and connecting manually to write SQL code.</p>
-<h2 id="section-2--3">Section 2 &amp; 3</h2>
+<h2 id="section-2--3--some-basic-keywords--statements">Section 2 &amp; 3 | Some Basic Keywords &amp; Statements</h2>
 <p><strong>Database</strong> : a container of tables, queries and functions as well as a holder of security.<br>
 Every query is run in the context of the database.</p>
-<p>This is needed on every single query; equivalent to <code>print</code> in other languages.</p>
+<p>This is needed on every single query; equivalent to <code>print</code> in other languages.<br>
+Uppercase <strong>keywords</strong> are optional, but try to remain consistent in your chosen style.<br>
+<em>(See below.)</em></p>
 <pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SELECT</span>
+<span class="token operator">OR</span>
+<span class="token keyword">select</span>
 </code></pre>
 <p>This names the columns.</p>
 <pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">AS</span>
 </code></pre>
 <p><code>;</code> semicolons are mostly optional.</p>
-<p>This specifies the end of statment batches.</p>
+<p>This specifies the end of statement batches.</p>
 <pre class=" language-sql"><code class="prism  language-sql">GO
 </code></pre>
 <p><strong>dbo</strong> under Tables → database owner.</p>
@@ -155,7 +163,8 @@ columnName
 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
 </code></pre>
 <p>White space is ignored.</p>
-<p><strong>*</strong> (asterisk) also known mostly commonly as the short hand for <strong>ALL</strong>. <em>(See below)</em></p>
+<p><strong>*</strong> (asterisk) also known mostly commonly as the shorthand for <strong>ALL</strong>. <em>(See below)</em><br>
+This will retrieve all values from the column.</p>
 <pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> columnName
 </code></pre>
 <p>This deletes the contents of the table’s columns.</p>
@@ -163,8 +172,10 @@ columnName
 <span class="token operator">OR</span>
 <span class="token keyword">TRUNCATE</span> <span class="token keyword">TABLE</span> tableName
 </code></pre>
-<p><em>(I might be wrong about the above.)</em></p>
-<h2 id="section-4">Section 4</h2>
+<p>This deletes the table.</p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> tableName
+</code></pre>
+<h2 id="section-4--some-data-types--declarations">Section 4 | Some Data Types &amp; Declarations</h2>
 <p>This specifies the database context for queries.</p>
 <pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">USE</span> databaseName 
 </code></pre>
@@ -175,21 +186,28 @@ Format <code>DECLARE [@variableName] AS [data type] = [value]</code>. <em>(See b
 <p>This assigns a variable a new value.</p>
 <pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SET</span> <span class="token variable">@variableName</span> <span class="token operator">=</span> <span class="token number">1</span>
 </code></pre>
-<p><code>--</code> To add comments, also note comment buttons on the <strong>SSMS</strong> toolbar.</p>
-<pre class=" language-sql"><code class="prism  language-sql"><span class="token comment">-- these are comments</span>
+<p><code>--</code> To add comments, also note comment buttons on the <strong>SSMS</strong> toolbar.<br>
+Comments are useful for documenting code.</p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token comment">-- this selects all from the scores column</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> scores
+
+<span class="token comment">-- these are comments</span>
 <span class="token comment">-- the early bird catches the worm</span>
 <span class="token comment">-- the second mouse gets the cheese</span>
 </code></pre>
 <p><strong>Some data types</strong> and their respective <strong>max values, min values</strong> and <strong>memory sizes</strong>.<br>
 Assigning a value that is too large or too small for a given data type will cause a <strong>Arithmetic Overflow Error</strong></p>
-<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">bigint</span> : 	<span class="token operator">-</span><span class="token number">2</span><span class="token operator">^</span><span class="token number">63</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">223</span><span class="token punctuation">,</span><span class="token number">372</span><span class="token punctuation">,</span><span class="token number">036</span><span class="token punctuation">,</span><span class="token number">854</span><span class="token punctuation">,</span><span class="token number">775</span><span class="token punctuation">,</span><span class="token number">808</span><span class="token punctuation">)</span> <span class="token keyword">to</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">63</span><span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">223</span><span class="token punctuation">,</span><span class="token number">372</span><span class="token punctuation">,</span><span class="token number">036</span><span class="token punctuation">,</span><span class="token number">854</span><span class="token punctuation">,</span><span class="token number">775</span><span class="token punctuation">,</span><span class="token number">807</span><span class="token punctuation">)</span>
-<span class="token number">8</span> bytes
-<span class="token keyword">int</span> : 		<span class="token operator">-</span><span class="token number">2</span><span class="token operator">^</span><span class="token number">31</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">147</span><span class="token punctuation">,</span><span class="token number">483</span><span class="token punctuation">,</span><span class="token number">648</span><span class="token punctuation">)</span> <span class="token keyword">to</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">31</span><span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">147</span><span class="token punctuation">,</span><span class="token number">483</span><span class="token punctuation">,</span><span class="token number">647</span><span class="token punctuation">)</span>
-<span class="token number">4</span> Bytes
-<span class="token keyword">smallint</span> : 	<span class="token operator">-</span><span class="token number">2</span><span class="token operator">^</span><span class="token number">15</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">768</span><span class="token punctuation">)</span> <span class="token keyword">to</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">15</span><span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">767</span><span class="token punctuation">)</span>
-<span class="token number">2</span> Bytes
-<span class="token keyword">tinyint</span> : 	 <span class="token number">0</span> <span class="token keyword">to</span> <span class="token number">255</span> : <span class="token punctuation">(</span>does <span class="token operator">not</span> allow negative numbers excluding <span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token number">1</span> Byte
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token comment">-- 8 bytes in memory</span>
+<span class="token keyword">BIGINT</span> →	<span class="token operator">-</span><span class="token number">2</span><span class="token operator">^</span><span class="token number">63</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">223</span><span class="token punctuation">,</span><span class="token number">372</span><span class="token punctuation">,</span><span class="token number">036</span><span class="token punctuation">,</span><span class="token number">854</span><span class="token punctuation">,</span><span class="token number">775</span><span class="token punctuation">,</span><span class="token number">808</span><span class="token punctuation">)</span> <span class="token keyword">to</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">63</span><span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">223</span><span class="token punctuation">,</span><span class="token number">372</span><span class="token punctuation">,</span><span class="token number">036</span><span class="token punctuation">,</span><span class="token number">854</span><span class="token punctuation">,</span><span class="token number">775</span><span class="token punctuation">,</span><span class="token number">807</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- 4 Bytes in memory</span>
+<span class="token keyword">INT</span> →		<span class="token operator">-</span><span class="token number">2</span><span class="token operator">^</span><span class="token number">31</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">147</span><span class="token punctuation">,</span><span class="token number">483</span><span class="token punctuation">,</span><span class="token number">648</span><span class="token punctuation">)</span> <span class="token keyword">to</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">31</span><span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">147</span><span class="token punctuation">,</span><span class="token number">483</span><span class="token punctuation">,</span><span class="token number">647</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- 2 Bytes in memory</span>
+<span class="token keyword">SMALLINT</span> →	<span class="token operator">-</span><span class="token number">2</span><span class="token operator">^</span><span class="token number">15</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">768</span><span class="token punctuation">)</span> <span class="token keyword">to</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">15</span><span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">767</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- 1 Byte in memory</span>
+<span class="token keyword">TINYINT</span> →	 <span class="token number">0</span> <span class="token keyword">to</span> <span class="token number">255</span> : <span class="token punctuation">(</span>does <span class="token operator">not</span> allow negative numbers excluding <span class="token number">0</span><span class="token punctuation">)</span>
 </code></pre>
 <p>To declare a variable that will have 7 digits in total, or a <strong>precision</strong> of 7 digits,<br>
 but 2 of those digits have to come after a decimal point. Do this:</p>
@@ -202,7 +220,7 @@ but 2 of those digits have to come after a decimal point. Do this:</p>
 <strong>Note</strong> both numbers are 7 digits, but the second parameter condition is not satisfied.</p>
 <p><code>DECIMAL()</code> and <code>NUMERIC()</code> will round numbers up or down.</p>
 <p><code>MONEY</code> and <code>SMALLMONEY</code> will round numbers up or down at the 4th decimal place.</p>
-<p>To declare and initialise a <code>FLOAT</code> variable. Why 24? Click on this <a href="https://docs.microsoft.com/en-us/sql/t-sql/data-types/float-and-real-transact-sql?view=sql-server-ver15">FLOAT</a> to read the MS docs.</p>
+<p>To declare and initialise a <code>FLOAT</code> variable. Why 24? Click on this <a href="https://docs.microsoft.com/en-us/sql/t-sql/data-types/float-and-real-transact-sql?view=sql-server-ver15">FLOAT</a> to read the Microsoft documentation.</p>
 <pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">DECLARE</span> <span class="token variable">@myFloat</span> <span class="token keyword">AS</span> <span class="token keyword">FLOAT</span><span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">123451234.7891</span>
 <span class="token operator">OR</span>
 <span class="token keyword">DECLARE</span> <span class="token variable">@myFloat</span> <span class="token keyword">AS</span> <span class="token keyword">REAL</span><span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">123451234.7891</span>
