@@ -9,64 +9,122 @@
   <link rel="stylesheet" href="https://stackedit.io/style.css" />
 </head>
 
-<body class="stackedit">
+<body class="stackedit" style="background-color: #f3f3f3">
   <div class="stackedit__html"><h1 id="microsoft-sql-notes">Microsoft SQL Notes</h1>
 <h2 id="section-1--download--installation-guide">Section 1 | Download &amp; Installation Guide:</h2>
 <ol>
 <li>
-<p><a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">https://www.microsoft.com/en-us/sql-server/sql-server-downloads</a> …Downloads &gt; <strong>Download Now</strong></p>
+<p>Go to <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">https://www.microsoft.com/en-us/sql-server/sql-server-downloads</a></p>
+<ul>
+<li>Select <strong>Downloads</strong> &gt;</li>
+<li><strong>Download Now</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>MEDIA LOCATION &gt; C:\…, E:\…, D:\… &gt; <strong>Install</strong></p>
+<p>Run the .exe</p>
+<ul>
+<li>Select <strong>Custom</strong> &gt;</li>
+<li>Choose MEDIA LOCATION <code>C:\SQL2019</code> &gt;</li>
+<li><strong>Install</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>&gt; <strong>New SQL Server stand-alone installation or add features to an existing installation</strong></p>
+<p>Launch Microsoft SQL Server Installation Centre <em>(you can close the .exe now)</em></p>
+<ul>
+<li>Select <strong>Installation</strong> on the side bar &gt;</li>
+<li>Select <strong>New SQL Server stand-alone installation or add features to an existing installation</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>Microsoft Update … &gt; <strong>Next</strong></p>
+<p>Product Key</p>
+<ul>
+<li><strong>Specify a free edition:</strong> &gt;</li>
+<li>Select <strong>Developer</strong> &gt;</li>
+<li><strong>Next</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>Install Rules … &gt; <strong>Next</strong></p>
+<p>License Terms</p>
+<ul>
+<li>Tick <strong>I accept the license terms and Privacy Statment</strong> &gt;</li>
+<li><strong>Next</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>Product Key &gt; Specify a free edition: Developer &gt; <strong>Next</strong></p>
+<p>Install Rules</p>
+<ul>
+<li>It will carry our setup processes</li>
+<li><strong>Next</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>License Terms &gt; <strong>I accept…</strong> &gt; <strong>Next</strong></p>
-</li>
-<li>
-<p>Feature Selection <em>(tick these)</em> &gt;</p>
+<p>Feature Selection</p>
 <blockquote>
-<p>✓ Database Engine Services<br>
-✓ Full-Text &amp; Semantic Extractions for Search<br>
-✓ Analysis Services<br>
-✓ Client Tools Connectivity<br>
-✓ Intergration Services</p>
+<p>✓ <strong>Database Engine Services</strong></p>
 </blockquote>
-<p>&gt; <strong>Next</strong></p>
+<p><strong>Next</strong> &gt;</p>
 </li>
 <li>
-<p>Instance Configuration &gt; Default instance <em>(button)</em> &gt; <strong>Next</strong></p>
+<p>Instance Configuration</p>
+<ul>
+<li>Select <strong>Default instance</strong> &gt;</li>
+<li><strong>Next</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>Server Configuration &gt; <strong>Next</strong></p>
+<p>Server Configuration</p>
+<ul>
+<li><strong>Next</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>Database Engine Configuration &gt; <strong>Windows authentication mode</strong> &gt; <strong>Add Current User</strong> &gt; <strong>Next</strong></p>
+<p>Database Engine Configuration</p>
+<ul>
+<li>Select <strong>Windows authentication mode</strong> &gt;</li>
+<li>Select <strong>Add Current User</strong> &gt;</li>
+<li><strong>Next</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>Analysis Services Configuration &gt; <strong>Multidimensional &amp; Data Mining Mode</strong> &gt; <strong>Add Current User</strong> &gt; <strong>Next</strong></p>
+<p>Ready to Install</p>
+<ul>
+<li><strong>Install</strong> &gt;</li>
+<li>When it’s done select <strong>Close</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>Ready to Install &gt; <strong>Install</strong></p>
+<p>Launch Microsoft SQL Server Installation Centre</p>
+<ul>
+<li>Select <strong>Installation</strong> on the side bar &gt;</li>
+<li>Select <strong>Install SQL Server Management Tools</strong> &gt;</li>
+<li><strong>Download SQL Server Management Tools (SSMS)</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>Complete &gt; <strong>Close</strong></p>
+<p>Run the .exe</p>
+<ul>
+<li><strong>Install</strong> &gt;</li>
+<li>When it’s done select <strong>Close</strong> &gt;</li>
+</ul>
 </li>
 <li>
-<p>&gt; <strong>Install SQL Server Management Tools</strong> &gt; <strong>Download SQL Server Management Tools (SSMS)</strong></p>
+<p>Launch Microsoft SQL Server Management Studio</p>
+<ul>
+<li>Enter <strong>.</strong> (dot) as ‘Server name’ &gt;</li>
+<li><strong>Connect</strong> &gt;</li>
+</ul>
+</li>
+<li>
+<p>Launch Azure Data Studio</p>
+<ul>
+<li>Select <strong>New Connection</strong> &gt;</li>
+<li>Enter <strong>.</strong> (dot) for ‘Server’ &gt;</li>
+<li><strong>Connect</strong> &gt;</li>
+</ul>
 </li>
 </ol>
+<p>You can close all open windows now.<br>
+You’ll now be launching <strong>Microsoft SQL Server Management Studio</strong> and connecting manually to write SQL code.</p>
 </div>
 </body>
 
