@@ -6,7 +6,7 @@ layout: default
 ---
 ## Section 1 | Download & Installation Guide:
 
-1. Go to https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+1. Go to [https://www.microsoft.com/en-us/sql-server/sql-server-downloads](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 	* Select **Downloads** >
 	* **Download Now** >
 <br/><br/>
