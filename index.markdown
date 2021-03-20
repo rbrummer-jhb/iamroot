@@ -8,7 +8,7 @@ layout: default
 
 1. Go to [https://www.microsoft.com/en-us/sql-server/sql-server-downloads](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 	* Select **Downloads** >
-	* **Download Now** >
+	* Under 'Developer' select **Download Now** >
 <br/><br/>
 
 2. Run the .exe
@@ -111,7 +111,7 @@ AS
 ```
 `;` semicolons are the standard way to separate each SQL statement in database systems that allow more than one SQL statement to be executed in the same call to the server.
 
-This specifies the end of statement batches.
+[GO](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/sql-server-utilities-statements-go?view=sql-server-ver15) signals the end of a batch of Transact-SQL statements to the SQL Server utilities.
 ```sql
 GO
 ```
@@ -229,6 +229,11 @@ DECLARE @myFloat AS REAL(24) = 123456.7891;
 -- this will produce 123456.7
 SELECT @myFloat AS myColumn;
 ```
+
+| myColumn |
+|:--------:|
+| 123456.7 |
+
 `FLOAT`s allow for very large numbers.
 
 `FLOAT(24)` is **precise** to 7 digits.
@@ -236,3 +241,118 @@ SELECT @myFloat AS myColumn;
 `FLOAT(53)` is **precise** to 15 digits.
 
 Avoid using `FLOAT`s unless there is a very **specific** reason.
+
+### Some Mathematical Functions
+***
+`POWER( [expression], [power] )` returns the specified power of the expression.
+
+`SQUARE( [expression] )` returns the squared value of the expression.
+
+`SQRT( [expression] )` returns the square root of the expression.
+```sql
+DECLARE @myVar AS NUMERIC(7,2) = 3;
+
+SELECT POWER(@myVar,3); -- 27
+SELECT SQUARE(@myVar); -- 9
+SELECT POWER(@myVar,0.5); -- 1.73
+SELECT SQRT(@myVar); -- 1.73205080756888
+```
+`FLOOR( [expression] )` returns the expression rounded **down**.
+
+`CEILING( [expression] )` returns the expression rounded **up**.
+```sql
+DECLARE @myVar AS NUMERIC(7,2) = 12.345;
+
+SELECT FLOOR(@myVar); -- 12
+SELECT CEILING(@myVar); -- 13
+```
+`ROUND( [expression], [decimal place] )` returns the nearest whole number of the expression. The second parameter is the specified decimal place.
+
+Read more about ROUND() [here](https://docs.microsoft.com/en-us/sql/t-sql/functions/round-transact-sql?view=sql-server-ver15).
+```sql
+SELECT ROUND(12.345, 1); -- 12.4
+SELECT ROUND(12.345, 2); -- 12.35
+```
+[PI()](https://docs.microsoft.com/en-us/sql/t-sql/functions/pi-transact-sql?view=sql-server-ver15) returns the constant value of PI.
+```sql
+SELECT PI(); -- 3,14159265358979
+```
+[EXP()](https://docs.microsoft.com/en-us/sql/t-sql/functions/exp-transact-sql?view=sql-server-ver15) returns the exponential value of the specified float expression.
+```sql
+SELECT EXP(1); -- 2,71828182845905
+```
+`ABS()` returns the positive form of the expression.
+`SIGN()` returns **1** if the expression is **positive**, **-1** if it's **negative** and **0** if it's **zero**
+```sql
+DECLARE @myVar AS NUMERIC(7,2) = -12345.67;
+
+SELECT ABS(@myVar) AS myABS, SIGN(@myVar) AS mySign;
+```
+
+| myABS    | mySign |
+|:--------:|:------:|
+| 12345.67 | -1.00  |
+
+[RAND()](https://docs.microsoft.com/en-us/sql/t-sql/functions/rand-transact-sql?view=sql-server-ver15) returns a pseudo-random float value from 0 through 1, exclusive.
+```sql
+SELECT RAND(1); -- 0,713591993212924, some random ass number
+```
+Here's more [Mathematical Functions](https://docs.microsoft.com/en-us/sql/t-sql/functions/mathematical-functions-transact-sql?view=sql-server-ver15).
+
+### Converting or Casting Number Types
+***
+<br/>
+```sql
+-- the result is 1 because 3 and 2, integers, are whole numbers
+SELECT 3 / 2 AS firstResult;
+-- changing one of them to a decimal will produce a decimal value
+SELECT 3.0 / 2 AS secondResult;
+SELECT 3 / 2.0 AS thirdResult;
+```
+
+| firstResult | secondResult | thirdResult |
+|:-:|:-:|:-:|
+| 1 | 1.500000 | 1.500000 |
+
+Use `CONVERT( [data type], [expression] )`
+
+or `CAST( [expression] AS [data type] )` to convert values.
+
+**Implicit** conversion or casting from `INT` to `DECIMAL`.
+```sql
+DECLARE @myVar AS DECIMAL(5,2) = 3;
+SELECT @myVar AS implicitCast;
+```
+
+| implicitCast |
+|:-:|
+| 3.00 |
+
+**Explicit** conversion or casting from `INT` to `DECIMAL`.
+```sql
+SELECT CONVERT(DECIMAL(5,2), 3) / 2; -- 1.500000
+SELECT CAST(3 AS DECIMAL(5,2)) / 2; -- 1.500000
+```
+
+You can also **cast** from a smaller type to a larger type. *(Observe below:)*
+```sql
+-- this is casting DECIMAL to INT (whole numbers)
+SELECT CONVERT(INT,12.345) + CONVERT(INT,12.7) AS firstCast;
+SELECT CONVERT(INT,12.345 + 12.7) AS secondCast;
+```
+
+| firstCast | secondCast |
+|:-:|:-:|
+| 24 | 25 |
+
+If you're casting a value to a type that is too small you can use `TRY_CONVERT` or `TRY_CAST` instead,
+and it will return `NULL` if an **Arithmetic Overflow Error** has occurred.*(Observe below:)*
+```sql
+-- TINYINT max is 255
+SELECT TRY_CAST(255.00 as TINYINT) AS myFirstValue
+SELECT TRY_CAST(2555.00 AS TINYINT) AS mySecondValue;
+```
+
+| myFirstValue | mySecondValue |
+|:-:|:-:|
+| 255 | NULL |
