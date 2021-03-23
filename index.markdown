@@ -282,6 +282,7 @@ SELECT PI(); -- 3,14159265358979
 SELECT EXP(1); -- 2,71828182845905
 ```
 `ABS()` returns the positive form of the expression.
+
 `SIGN()` returns **1** if the expression is **positive**, **-1** if it's **negative** and **0** if it's **zero**
 ```sql
 DECLARE @myVar AS NUMERIC(7,2) = -12345.67;
@@ -349,10 +350,124 @@ If you're casting a value to a type that is too small you can use `TRY_CONVERT` 
 and it will return `NULL` if an **Arithmetic Overflow Error** has occurred.*(Observe below:)*
 ```sql
 -- TINYINT max is 255
-SELECT TRY_CAST(255.00 as TINYINT) AS myFirstValue
+SELECT TRY_CAST(255.00 AS TINYINT) AS myFirstValue
 SELECT TRY_CAST(2555.00 AS TINYINT) AS mySecondValue;
 ```
 
 | myFirstValue | mySecondValue |
 |:-:|:-:|
 | 255 | NULL |
+
+# Section 5 | Strings
+There are **4 String types** in SQL. They are defined using single quotes `''`.
+* **char**
+* **varchar**
+* **nchar**
+* **nvarchar**
+
+`CHAR` and `VARCHAR` work in the **ASCII** range, and they only use **1 byte** of memory.
+
+`NCHAR` and `NVARCHAR` work in the **Unicode** range, and they use **2 bytes** of memory.<br/>
+*(These are useful for symbols, such as the Arabic characters, because they fall in the Unicode range.)*
+
+`CHAR` & `NCHAR` allocate memory statically.
+
+The allocated size doesn't change even if the assigned string is empty.
+```sql
+-- uses 1 byte per character
+DECLARE @myChar AS CHAR(10);
+-- empty string
+SET @myChar = '';
+
+SELECT @myChar AS myString,
+LEN(@myChar) AS myLength,
+DATALENGTH(@myChar) AS myDataLength;
+```
+
+| myString | myLength | myDataLength |
+|:-:|:-:|:-:|
+|   | 0 | 10 |
+
+```sql
+-- uses 2 bytes per character
+DECLARE @myNChar AS NCHAR(10);
+-- empty string
+SET @myNChar = '';
+
+SELECT @myNChar AS myString,
+LEN(@myNChar) AS myLength,
+DATALENGTH(@myNChar) AS myDataLength;
+```
+
+| myString | myLength | myDataLength |
+|:-:|:-:|:-:|
+|   | 0 | 20 |
+
+`VARCHAR` & `NVARCHAR` allocate memory dynamically.
+
+The allocated size changes as the size of the string changes [+ 2 bytes](https://docs.microsoft.com/en-us/sql/t-sql/data-types/char-and-varchar-transact-sql?view=sql-server-ver15).
+```sql
+-- allocated size is 10 bytes,
+-- but the myDataLength column will return 5 bytes
+-- (plus 2 bytes under the hood)
+DECLARE @myVarchar AS VARCHAR(10)
+SET @myVarchar = 'hello';
+
+SELECT @myVarchar AS myString,
+LEN(@myVarchar) AS myLength,
+DATALENGTH(@myVarchar) AS myDataLength;
+```
+
+| myString | myLength | myDataLength |
+|:-:|:-:|:-:|
+| hello | 5 | 5 |
+
+```sql
+-- allocated size is 10 bytes,
+-- but the myDataLength column will return 4 bytes
+-- (plus 2 bytes under the hood)
+DECLARE @myNVarchar AS NVARCHAR(10)
+SET @myNVarchar = 'hi';
+
+SELECT @myNVarchar AS myString,
+LEN(@myNVarchar) AS myLength,
+DATALENGTH(@myNVarchar) AS myDataLength;
+```
+
+| myString | myLength | myDataLength |
+|:-:|:-:|:-:|
+| hi | 2 | 4 |
+
+Windows has a program called **Character Map** that will show you **ASCII** and **Unicodes**.
+
+Note special characters with `CHAR` & `NCHAR`:
+```sql
+DECLARE @myChar AS CHAR(6);
+SET @myChar = 'helloӁ';
+SELECT @myChar AS myString;
+```
+
+| myCharString |
+|:-:|
+| hello**?** |
+
+```sql
+DECLARE @myNChar AS NCHAR(6);
+SET @myNChar = 'helloӁ';
+SELECT @myNChar AS myString;
+```
+
+| myNCharString |
+|:-:|
+| helloӁ |
+
+Note what happens if you assign a string value that is too long for the allocated size:
+```sql
+DECLARE @myCharString AS CHAR(7);
+SET @myCharString = 'mynamejeff';
+SELECT @myCharString AS myCharStringCol;
+```
+
+| myCharStringCol |
+|:-:|
+| mynamej |
