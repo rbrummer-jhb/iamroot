@@ -438,6 +438,15 @@ DATALENGTH(@myNVarchar) AS myDataLength;
 |:-:|:-:|:-:|
 | hi | 2 | 4 |
 
+SQL stores rows in bunches of 8096 bytes.
+So the minimum & maximum allocated memory bytes can be 1 & 8000.
+If you need to go beyond that, use this:
+```sql
+-- this allocates 2 billion bytes or 2 gigabytes
+VARCHAR(MAX);
+NVARCHAR(MAX);
+```
+
 Windows has a program called **Character Map** that will show you **ASCII** and **Unicodes**.
 
 Note special characters with `CHAR` & `NCHAR`:
@@ -471,3 +480,90 @@ SELECT @myCharString AS myCharStringCol;
 | myCharStringCol |
 |:-:|
 | mynamej |
+
+The `SELECT` statement below gives us **question marks** when it shouldn't.
+
+Observe the **implicit** conversion from `NVARCHAR` to `VARCHAR` in the output.
+```sql
+DECLARE @myNVarchar AS NVARCHAR(20);
+-- implicit conversion happens here
+SET @myNVarchar = 'Привет friend';
+
+SELECT @myNVarchar AS myString;
+```
+
+| myString |
+|:-:|
+| ?????? friend |
+
+You can fix this by prefixing the string with an **uppercase** `N`:
+```sql
+SET @myNVarchar = N'Привет friend';
+```
+
+| myString |
+|:-:|
+| Привет friend |
+
+### Some String Functions
+SQL Server is **NOT** zero-based. It starts counting from 1 unlike most programming languages.
+
+`LEFT( [string], [amount of characters] )` to print the characters from the left/start of the string.
+
+`RIGHT( [string], [amount of characters] )` to print the characters from the right/end of the string.
+
+Check it:
+```sql
+DECLARE @charASCII AS VARCHAR(10) = 'helloꝳ';
+DECLARE @charUNICODE AS NVARCHAR(10) = N'helloꝳ';
+
+SELECT LEFT(@charASCII,2) AS myASCII,
+RIGHT(@charUNICODE,2) AS myUNICODE;
+```
+
+| myASCII | myUNICODE |
+|:-:|:-:|
+| he | oꝳ |
+
+`SUBSTRING( [string], [starting index], [amount of characters] )` to extract a specific substring of characters.
+```sql
+-- 'noface' could've been in a @variable as well
+SELECT SUBSTRING('noface',3,2) AS middleLetters;
+```
+
+| middleLetters |
+|:-:|
+| fa |
+
+`LTRIM( [string] )` trims **leading** spaces, or spaces to the **left** of the string.
+
+`RTRIM( [string] )` trims **trailing** spaces, or spaces to the **right** of the string.
+
+`TRIM( [string] )` trims **leading** & **trailing** spaces, or spaces to the **left** & **right** of the string.
+```sql
+SELECT
+LTRIM('     I Had Spaces To My Left') AS leftSpacesTrimmed,
+RTRIM('I Had Spaces To My Right     ') AS rightSpacesTrimmed,
+TRIM('     Spaces were on all sides     ')) AS trimmedLeftAndRight;
+```
+
+| leftSpacesTrimmed | rightSpacesTrimmed | trimmedLeftAndRight |
+|:-:|:-:|:-:|
+| I Had Spaces To My Left | I Had Spaces To My Right | Spaces were on all sides |
+
+`REPLACE( [string], [characters to replace], [new character] )` replaces all instances of a character with a new character.
+
+`UPPER( [string] )` converts the characters to **uppercase**.
+
+`LOWER( [string] )` converts the characters to **lowercase**.
+```sql
+REPLACE('hello','h','J') AS replacedCharacters,
+UPPER('small') AS uppercase,
+LOWER('BIG') AS lowercase;
+```
+
+| replacedCharacters | uppercase | lowercase |
+|:-:|:-:|:-:|
+| Jello | SMALL | big |
+
+Here's more [String Functions](https://docs.microsoft.com/en-us/sql/t-sql/functions/string-functions-transact-sql?view=sql-server-ver15).
