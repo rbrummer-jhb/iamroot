@@ -1,4 +1,5 @@
 ---
 ---
 
-@import "style="background-color: #303030"";
+@import "{{ site.theme }}";
+style="background-color: #303030"
