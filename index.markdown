@@ -567,3 +567,80 @@ LOWER('BIG') AS lowercase;
 | Jello | SMALL | big |
 
 Here's more [String Functions](https://docs.microsoft.com/en-us/sql/t-sql/functions/string-functions-transact-sql?view=sql-server-ver15).
+
+`NULL` usually means that your variable does not have a value assigned to it.
+```sql
+DECLARE @myVar AS INT;
+SELECT @myVar AS myCol;
+```
+
+| myCol |
+|:-:|
+| NULL |
+
+### String Concatenation
+
+The following are some examples of concatenating strings.
+
+If you add anything to **NULL** the returned value is **NULL**.
+<br/>See **FullName column**.
+
+The `IIF()` function has 2 i's and it was added from Microsoft Access.
+<br/>See **FullName1 column**.
+
+`CASE WHEN THEN ELSE END` is not as compact as `IIF()`,
+<br/>but it does have its special use cases.
+<br/>See **FullName2 column**.
+
+`COALESCE()` takes as many arguments as you like
+<br/>It checks if each argument, starting from the left, is **NULL**
+<br/>and returns the argument that is not **NULL**.
+<br/>See **FullName3 column**.
+
+`CONCAT()` takes as many arguments as you like
+<br/>and if any argument is **NULL** it disregards it.
+<br/>See **FullName4 column**.
+
+```sql
+DECLARE @firstName AS NVARCHAR(20);
+DECLARE @middleName AS NVARCHAR(20);
+DECLARE @lastName AS NVARCHAR(20);
+
+SET @firstName = 'Edgar';
+-- SET @middleName = 'Allan';
+SET @lastName = 'Poe';
+
+SELECT @firstName + ' ' + @middleName + ' ' + @lastName AS FullName;
+
+-- IIF @middleName equals NULL,
+-- return an empty string,
+-- else concatenate a space and @middleName
+SELECT @firstName
++ IIF(@middleName IS NULL, '', ' ' + @middleName)
++ ' ' + @lastName AS FullName1;
+
+-- WHEN @middleName IS NULL
+-- THEN return an empty string
+-- ELSE concatenate a space and @middleName
+-- END the case
+SELECT @firstName
++ CASE WHEN @middleName IS NULL THEN '' ELSE ' ' + @middleName END
++ ' ' + @lastName AS FullName2;
+
+-- A space + @middleName is NULL is this case
+-- because @middleName was not assigned a value
+-- The next argument (empty string) is not NULL
+SELECT @firstName
++ COALESCE(' ' + @middleName, '')
++ ' ' + @lastName AS FullName3;
+
+-- @firstName is not NULL,
+-- ' ' + @middleName is NULL,
+-- @lastName is not NULL.
+SELECT CONCAT(@firstName, ' ' + @middleName, ' ', @lastName)
+AS FullName4;
+```
+
+| FullName | FullName1 | FullName2 | FullName3 | FullName4 |
+|:-:|:-:|:-:|:-:|:-:|
+| NULL | Edgar Poe | Edgar Poe | Edgar Poe | Edgar Poe |
