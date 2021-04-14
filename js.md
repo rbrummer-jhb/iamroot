@@ -8,7 +8,7 @@ permalink: /js/
 ---
 # Section 1 | Overview & Setup
 
-These notes are based of off this course: https://www.udemy.com/course/the-complete-javascript-course/
+These notes are based of off this course: [https://www.udemy.com/course/the-complete-javascript-course/](https://www.udemy.com/course/the-complete-javascript-course/)
 
 1. Fundamentals
 2. Developer Skills
