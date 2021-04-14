@@ -6,32 +6,22 @@ css: js
 layout: js
 permalink: /js/
 ---
-## Coming Soon
+# Section 1 | Overview & Setup
 
-```JavaScript
+These notes are based of off this course: https://www.udemy.com/course/the-complete-javascript-course/
 
-
-
-
-
-
-
-
-
-
-
-...tehehe
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
+1. Fundamentals
+2. Developer Skills
+3. DOM Manipulation
+4. How JavaScript Works
+5. Modern Operators (ES6+)
+6. Functions
+7. Arrays
+8. Numbers, Dates & Timers
+9. Advanced DOM
+10. Object-Oriented JS
+11. Mapty Project
+12. Asynchronous JS
+13. Modern JA Applications
+14. Forkify Project
+15. Deployment & Git
