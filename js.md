@@ -10,7 +10,7 @@ permalink: /js/
 
 These notes are based of off this course:
 <br/>[https://www.udemy.com/course/the-complete-javascript-course/](https://www.udemy.com/course/the-complete-javascript-course/)
-
+>
 * Fundamentals
 * Developer Skills
 * DOM Manipulation
@@ -42,7 +42,7 @@ alert("Hello World!")
 ```
 
 You can navigate through your previous console entries with the **up arrow**.
-
+>
 JavaScript is a **high-level**, **object-oriented**, **multi-paradigm** programming language.
 * The **language** is used to give the computer instructions.
 * **High-level** : you don't have to worry too much about complexities like memory management.
@@ -50,6 +50,7 @@ JavaScript is a **high-level**, **object-oriented**, **multi-paradigm** programm
 * **Multi-paradigm** : accommodates a variety of programming styles (imperative & declarative programming; the way of structuring code).
 
 In **Web Development** JavaScript is used alongside **HTML** & **CSS** to build web applications.
+>
 * **HTML** : Content. *(Nouns)*
 * **CSS** : Presentation. *(Adjectives)*
 * **JS** : Dynamic effects & Loading data. *(Verbs)*
@@ -129,3 +130,143 @@ let 3years = 3;
 // uses a keyword as a variable name
 let function = 'arigato';
 ```
+
+A **VALUE** can either be an **OBJECT** or a **PRIMITIVE**.<br/>
+There are **7 Primitive Data Types**:
+>
+1. Number *(always floating points; decimals & integers)*<br/>
+`let age = 23;`
+2. String *(used for text; double or single quotes)*<br/>
+`let firstName = 'Hanzo';`
+3. Boolean *(logical type; true of false)*<br/>
+`let isOfAge = true;`
+4. Undefined *(does not have an assigned value)* <br/>
+`let shenanigans;`
+5. Null *(also means 'empty value' in some circumstances)*
+6. Symbol (ES2015) *(defines a value that is unique & immutable)*
+7. Bigint (ES2020) *(for integers that are too large for the number type)*
+
+**Comments** are good for documenting code and are ignored by JavaScript.
+```javascript
+// single line comment
+
+/*
+multi-line comment
+*/
+
+// wubba lubba dub dub
+let aCoolShow = 'Rick & Morty';
+```
+
+JavaScript has **Dynamic Typing**; you don't have to specify the data type of the variable's value.<br/>
+The **value** has a type NOT the **variable**.
+
+`typeof` to get the value's data type.
+
+```javascript
+let isStrong = true; // boolean value
+/*
+'let' keyword is omitted,
+because we are reassigning
+a value to the same variable,
+or mutating the variable
+*/
+isStrong = 'YES!'; // string value; dynamically type casted
+
+console.log(typeof 47);
+console.log(typeof isStrong);
+isStrong = false;
+console.log(typeof isStrong);
+```
+
+| Console Output |
+|:-|
+| number |
+| string |
+| boolean |
+
+**Undefined** is different from other data types; the **variable & value** can be **undefined**.
+
+```javascript
+let year; // empty variable
+console.log(year);
+console.log(typeof year);
+```
+
+| Console Output |
+|:-|
+| undefined |
+| undefined |
+
+Using `const` is a good practice for declaring variables.<br/>
+Use `let` if you are sure the variable's value will change.<br/>
+`var` is the old way of declaring variables; avoid this.<br/>
+Omitting these declaration keywords causes JavaScript to create a property on the global object.
+
+```javascript
+let age = 30;
+age = 31; // age mutated
+
+const birthYear = 1990;
+birthYear = 1991; // throws TypeError; immutable
+
+var job = 'programmer'; // old declaration style; avoid
+job = 'teacher'; // job mutated
+
+lastName = 'Schwarzeneggar'; // declaration keyword omitted
+console.log(lastName); // still legal
+```
+
+| Console Output |
+|:-|
+| Schwarzeneggar |
+
+Basic operators for **Arithmetic**, **Concatenation** & **Assignment** and their **Precedence**.<br/>
+`x > y` x greater than y.<br/>
+`x >= y` x greater than or equal to y.<br/>
+`x < y` x less than y.<br/>
+`x <= y` x less than or equal to y.<br/>
+`x ** y` x to the power of y.<br/>
+
+```javascript
+// arithmetic operators
+const now = 2077;
+const ageGandalf = now - 1011;
+const ageGaladriel = now - 420;
+console.log(ageGandalf, ageGaladriel);
+
+// 2 ** 3 means 2 to the power of 3 = 2 * 2 * 2
+console.log(ageGandalf * 2, ageGandalf / 10, 2 ** 3);
+
+const firstName = 'greatest';
+const lastName = 'ever';
+console.log(firstName + ' ' + lastName);
+
+// assignment operators
+// arithmetic takes precedence over assignment
+let x = 10 + 5;
+x += 10; // x = x + 10 = 25
+x *= 4; // x = x * 4 = 100
+x++; // x = x + 1
+x--; // x = x - 1
+console.log(x);
+
+// comparison operators
+console.log(ageGandalf > ageGaladriel);
+console.log(ageGaladriel >= 18);
+
+const isFullAge = ageGaladriel >= 18;
+
+// arithmetic takes precedence over comparison
+console.log(now - 1991 > now - 2018);
+```
+
+| Console Output |
+|:-|
+| 1066 1657 |
+| 2132 106.6 8 |
+| greatest ever |
+| 100 |
+| false |
+| true |
+| true |
