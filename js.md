@@ -6,7 +6,7 @@ css: js
 layout: js
 permalink: /js/
 ---
-# Section 1 | Overview & Setup
+## Section 1 | Overview & Setup
 
 These notes are based of off this course:
 <br/>[https://www.udemy.com/course/the-complete-javascript-course/](https://www.udemy.com/course/the-complete-javascript-course/)
@@ -23,13 +23,13 @@ These notes are based of off this course:
 * Object-Oriented JS
 * Mapty Project
 * Asynchronous JS
-* Modern JA Applications
+* Modern JS Applications
 * Forkify Project
 * Deployment & Git
 
 Download Visual Studio Code [here](https://code.visualstudio.com/download).
 
-# Section 2 | Fundamentals
+## Section 2 | Fundamentals
 
 You can hit `CTRL + SHIFT + J` (Windows), or `right-click > Inspect` to open the Developer Tools in Chrome to gain access to the console.
 
