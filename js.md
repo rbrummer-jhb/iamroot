@@ -270,3 +270,49 @@ console.log(now - 1991 > now - 2018);
 | false |
 | true |
 | true |
+
+### Strings & Template Literals
+
+JavaScript has **Type Coercion** which will convert value types. *(See below)*:
+
+```javascript
+const firstName = 'Bane';
+const job = 'villain';
+const birthYear = 1977;
+const year = 2077;
+const bane = "I'm " + firstName +
+", a " + (year - birthYear) +
+" year old " + job + "!";
+```
+
+**Template Literals (ES2015)** can assemble multiple pieces into a string with **`` backticks**
+and this notation for variables `${ variableName }`.
+
+```javascript
+const bane2 = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
+
+// inserting newlines with single quotes
+console.log('String with \n\
+multiple \n\
+lines');
+
+// inserting mewlines with backticks
+console.log(`String with
+multiple
+lines`);
+```
+
+### Conditionals
+
+`if()` to declare a **Control Structure** or condition.
+
+```javascript
+const age = 15;
+
+if (age >= 18) {
+    console.log('Sherlock can start his driving license');
+} else {
+    const yearsLeft = 18 - age;
+    console.log(`Sherlock is too young. Wait another ${yearsLeft} years`);
+}
+```
