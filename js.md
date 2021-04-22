@@ -316,3 +316,56 @@ if (age >= 18) {
     console.log(`Sherlock is too young. Wait another ${yearsLeft} years`);
 }
 ```
+
+### Type Conversion & Coercion
+
+Type **Conversion** is explicit **conversion/casting** of types *(manual)*.<br/>
+Type **Coercion** is implicit **conversion/casting** of types *(automatic)*.
+JavaScript will try to convert different value types beside an operator to the same type.<br/>
+`Number( [expression] )` to cast to a number type.<br/>
+`String( [expression] )` to cast to a string type.<br/>
+You cannot convert to **undefined** or **null**.
+
+```javascript
+const inputYear = '1991';
+
+console.log(Number(inputYear), inputYear); // 1991 "1991"
+console.log(Number(inputYear) + 18) // 2009
+
+// this will return NaN (Not a Number)
+// which means an invalid number
+console.log(Number('string'));
+
+// oddly the type of NaN is number
+console.log(typeof(NaN));
+
+console.log(String(23), 23); // "23" 23
+
+// this invokes type coercion
+console.log("I am " + 23 + " years old");
+
+// this will convert to numbers and return the result
+console.log('23' - '10' - 3); // 10
+
+// this will simply concatenate the numbers because
+// the + operator has another function with strings
+console.log('23' + '10' + 3); // 23103
+
+console.log('23' / '2'); // 11.5
+console.log('23' > '10'); // true
+
+let n = '1' + 1;
+n = n - 1;
+console.log(n); // 10
+
+```
+
+### Truthy & Falsy Values
+
+There are **5 Falsy Values** in JavaScript. These are values that will become **false** when converted to a **boolean**.
+
+1. 0
+2. '' (empty string)
+3. Null
+4. NaN (Not a Number)
+5. undefined
