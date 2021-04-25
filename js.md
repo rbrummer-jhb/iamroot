@@ -369,3 +369,25 @@ There are **5 Falsy Values** in JavaScript. These are values that will become **
 3. Null
 4. NaN (Not a Number)
 5. undefined
+
+```javascript
+console.log(Boolean(0)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean('String')); // true
+console.log(Boolean({})); // true
+console.log(Boolean('')); // false
+
+const money = 0;
+if (money) {
+    console.log("Don't spend it all.");
+} else {
+    console.log("You should get a job!");
+}
+
+let height; // undefined
+if (height) {
+    console.log("height is defined");
+} else {
+    console.log("height is undefined");
+}
+```
