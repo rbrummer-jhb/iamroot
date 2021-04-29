@@ -391,3 +391,114 @@ if (height) {
     console.log("height is undefined");
 }
 ```
+
+### Boolean Logic
+
+Truth Table for **AND**:<br/>
+A **AND** B:
+
+|  |  | **A** |  |
+|  | **AND** | TRUE | TRUE |
+| **B** | TRUE | **TRUE** | FALSE |
+|  | FALSE | FALSE | FALSE |
+
+Truth table for **OR**:<br/>
+A **OR** B:
+
+|  |  | **A** |  |
+|  | **OR** | TRUE | FALSE |
+| **B** | TRUE | TRUE | TRUE |
+|  | FALSE | TRUE | FALSE |
+
+**NOT** inverts **true/false** values.
+
+### The Switch Statement
+
+```javascript
+const day = 'monday';
+
+switch (day) {
+    case 'monday':
+        console.log('Plan course structure.');
+        console.log('Go to coding meetup.');
+        break;
+    case 'tuesday':
+        console.log('Prepare theory videos.');
+        break;
+    case 'wednesday':
+    case 'thursday':
+        console.log('Write code examples.');
+        break;
+    case 'friday':
+        console.log('Record videos');
+        break;
+    case 'saturday':
+    case 'sunday':
+        console.log('Enjoy the weekend.');
+        break;
+    default:
+        console.log('Invalid day');
+}
+
+// this is the same as the above switch statement
+if (day === 'monday') {
+    console.log('Plan course structure.');
+    console.log('Go to coding meetup.');
+}
+else if (day === 'tuesday') {
+    console.log('Prepare theory videos.');
+}
+else if (day === 'wednesday' || day === 'thursday') {
+    console.log('Write code examples.');
+}
+else if (day === 'friday') {
+    console.log('Record videos');
+}
+else if (day === 'saturday' || day === 'sunday') {
+    console.log('Enjoy the weekend.');
+}
+else {
+    console.log('Invalid day');
+}
+```
+
+**SIDE NOTE**:
+* An **expression** is anything that produces a value.<br/>
+> 4 + 7 // this is an expression
+
+* A **statement** is comprised of expressions and end with semicolons `;`.
+> const myNum = 4 + 7; // this is a statement
+
+* **Template Literals** can only take expressions.
+> console.log(`${50 - 47} is my favourite number.`);
+
+### The Conditional / Ternary Operator
+
+`[condition] ? [expression] : [alternative expression] ;` to use the **Ternary Operator**.
+```javascript
+const age = 23;
+age >= 18 ? console.log('I like to drink wine.') :
+console.log('I like to drink water');
+
+const drink = age >= 18 ? 'wine' : 'water';
+console.log(drink);
+
+// This is the above statement uncondensed
+let drink2;
+if (age >= 18) {
+    drink2 = 'wine';
+} else {
+    drink2 = 'water';
+}
+console.log(drink2);
+
+// template literal
+console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}.`);
+```
+
+| Console Output |
+|:-:|
+| I like to drink wine. |
+| wine |
+| wine |
+| I like to drink wine. |
