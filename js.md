@@ -502,3 +502,156 @@ console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}.`);
 | wine |
 | wine |
 | I like to drink wine. |
+
+### Strict Mode
+
+`'use strict';` to activate **Strict Mode** in JavaScript.<br/>
+This **String statement** forbids us from doing certain things and it creates visible errors in the console instead of failing silently if there is something wrong in the code.<br/>
+```javascript
+'use strict';
+
+let hasDriversLicense = false;
+const passTest = true;
+
+// this ReferenceError will not be thrown without strict mode
+if (passTest) hasDriveLicense = true;
+
+// these will throw SyntaxError, because strict mode reserves
+// some words that might become keywords in the future
+const interface = 'Audio';
+const private = 47;
+```
+
+### Functions
+
+`function [function name]() {}` to **declare** a function.<br/>
+*(Don't use reserved keywords for function names.)*
+```javascript
+function logger() {
+    console.log('My name is Watson');
+}
+// this is calling / running / invoking the function
+logger();
+```
+
+Functions can **return or receive** data.<br/>
+You can **pass parameters/arguments** to a function<br/>
+`function [function name]( [param1], [param2] ) {}`
+
+Not all functions need to **return data** or **accept parameters**.<br/>
+Functions allow us to create more maintainable code and helps enforce the **D.R.Y** principle *(**D**on't **R**epeat **Y**ourself)*.
+
+```javascript
+function fruitProcessor(apples, oranges) {
+    const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
+    return juice;
+}
+// this captures the result of the function
+const appleJuice = fruitProcessor(5, 0);
+// this logs the captured result
+console.log(appleJuice);
+// this simply logs the result of the function
+console.log(fruitProcessor(4, 7));
+```
+
+| Console Output |
+|:-:|
+| Juice with 5 apples and 0 oranges. |
+| Juice with 4 apples and 7 oranges. |
+
+Function **declarations** can be called before they are defined.<br/>
+Function **expressions** can **NOT** be called before they are defined.<br/>
+Both function **Declarations** & function **Expressions** have their place.<br/>
+It's generally a good practice to have function declarations at the top of the script file.
+
+```javascript
+// calling before declaration
+console.log(calAge1(1997));
+// this is a function declaration
+function calAge1(birthYear) {
+    return 2077 - birthYear;
+}
+
+// this is a function expression
+const calAge2 = function (birthYear) {
+    return 2077 - birthYear;
+}
+// calling after declaration
+console.log(calAge2(1997));
+```
+
+### Arrow Functions
+
+**Arrow Functions** were introduced in ES6 *(ECMAScript6)*, and they can be one liner functions.
+
+```javascript
+const calcAge1 = birthYear => 2097 - birthYear;
+console.log(calcAge1(1997));
+
+const yearsUntilRetirement = (birthYear, firstName) => {
+    const age = 2077 - birthYear;
+    const retirement = 65 - age;
+    return `${firstName} retires in ${retirement} years.`;
+}
+console.log(yearsUntilRetirement(1997, 'Sherlock'));
+console.log(yearsUntilRetirement(1998, 'Watson'));
+```
+
+| Console Output |
+|:-:|
+| Sherlock retires in -15 years. |
+| Watson retires in -14 years. |
+
+**Functions calling other functions** *(docstrings/'contracts' included)*.
+
+**Docstrings** are a good practice in any programming language.<br/>
+They are used to document your code, especially **functions**.<br/>
+You can create a docstring by typing `/**` and then hitting **Enter**.<br/>
+Most editors will autocomplete the docstring for you by filling it with the necessary placeholder words.
+
+```javascript
+/**
+ * Multiplies the parameter (fruit) with 4
+ * @param {int} fruit
+ * @returns fruit * 4
+ */
+function cutPieces(fruit) {
+    return fruit * 4;
+}
+
+/**
+ * Calls cutPieces() and then creates a
+ * template literal with the parameters
+ * @param {int} apples
+ * @param {int} oranges
+ * @returns juice (Template Literal String)
+ */
+function fruitProcessor(apples, oranges) {
+    const applePieces = cutPieces(apples);
+    const orangePieces = cutPieces(oranges);
+
+    const juice = `Juice with ${applePieces} pieces of apple and
+    ${orangePieces} pieces of orange.`;
+    return juice;
+}
+console.log(fruitProcessor(2, 3));
+```
+
+Anything **after the return statement** in a function is **ignored**.<br/>
+So there are **3 different ways** of writing functions:
+* Function Declarations
+  ```javascript
+  function calcAge(birthYear) {
+    return 2037 - birthYear;
+  }
+  ```
+* Function Expressions
+  ```javascript
+  const calcAge = function (birthYear) {
+    return 2037 - birthYear;
+  }
+  ```
+* Arrow Functions
+  ```javascript
+  const calcAge = birthYear => 2037 - birthYear;
+  ```
