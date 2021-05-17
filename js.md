@@ -656,4 +656,28 @@ So there are **3 different ways** of writing functions:
   const calcAge = birthYear => 2037 - birthYear;
   ```
 
-Throw away line. Wubba Lubba Dub Dub!
+**Objects** are good for unstructured data.  
+You can access the properties of an object using **dot .** or **bracket []** notation.  
+You can build expressions with **bracket [] notation**.
+
+```javascript
+const obj = {
+    firstName: 'Michael',
+    lastName: 'Scott',
+    age: 55 - 10,
+    job: 'Regional Manager'
+};
+console.log(obj.firstName);
+console.log(['lastName']);
+
+const nameKey = 'Name';
+console.log(obj['first' + nameKey]);
+console.log(obj['last' + nameKey]);
+```
+
+| Console Output |
+|:-:|
+| Michael |
+| Scott |
+| Michael |
+| Scott |
