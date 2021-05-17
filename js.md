@@ -23,7 +23,7 @@ These notes are based of off this course:
 * Object-Oriented JS
 * Mapty Project
 * Asynchronous JS
-* Modern JS Applications
+* Modern JA Applications
 * Forkify Project
 * Deployment & Git
 
@@ -742,7 +742,8 @@ console.log(arr.includes(47));
 
 **Objects** are good for unstructured data.  
 You can access the properties of an object using **dot .** or **bracket []** notation.  
-You can build expressions with **bracket [] notation**.
+You can build expressions with **bracket [] notation**.  
+Any function that is attached to an object is called a **method**.  
 
 ```javascript
 const obj = {
@@ -750,9 +751,17 @@ const obj = {
     lastName: 'Scott',
     age: 55 - 10,
     job: 'Regional Manager'
+    // this property holds a method
+    calcAge: function (birthYear) {
+        return 2037 - birthYear;
+    }
 };
 console.log(obj.firstName);
 console.log(['lastName']);
+// dot notation
+console.log(obj.calcAge(1990));
+// bracket notation
+console.log(obj['calcAge'](1990));
 
 const nameKey = 'Name';
 console.log(obj['first' + nameKey]);
@@ -763,5 +772,56 @@ console.log(obj['last' + nameKey]);
 |:-:|
 | Michael |
 | Scott |
+| 47 |
+| 47 |
 | Michael |
 | Scott |
+
+`for( [counter]; [condition]; [increment] ) { [instruction] }` to declare a **for loop** control statement.
+
+```javascript
+for(let counter = 1; counter <= 10; counter++) {
+    console.log(`Dip dip potato chip ${counter}`);
+}
+```
+
+| Console Output |
+|:-:|
+| Dip dip potato chip 1 |
+| Dip dip potato chip 2 |
+| Dip dip potato chip 3 |
+| Dip dip potato chip 4 |
+| Dip dip potato chip 5 |
+| Dip dip potato chip 6 |
+| Dip dip potato chip 7 |
+| Dip dip potato chip 8 |
+| Dip dip potato chip 9 |
+| Dip dip potato chip 10 |
+
+Looping through an array.  
+`continue` exits the current iteration of the loop and **continues** to the next one.  
+`break` terminates the loop.  
+```javascript
+const obj = [
+    'Michael',
+    'Scott',
+    45,
+    'Regional Manager',
+    ['Dwight','Kevin','Oscar'] 
+];
+for (let i = 0; i < obj.length; i++) {
+    if (typeof obj[i] === 'number') continue;
+    console.log(obj[i], typeof obj[i]);
+}
+for (let i = 0; i < obj.length; i++) {
+    if (typeof obj[i] === 'number') break;
+    console.log(obj[i], typeof obj[i]);
+}
+```
+
+| Console Output *(continue)* | Console Output *(break)* |
+|:-:|:-:|
+| Michael string | Michael string |
+| Scott string | Scott string |
+| Regional Manager string |  |
+| ["Dwight", "Kevin", "Oscar"] |  |
