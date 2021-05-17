@@ -656,6 +656,90 @@ So there are **3 different ways** of writing functions:
   const calcAge = birthYear => 2037 - birthYear;
   ```
 
+**Arrays & Objects** are the most important data structures in JavaScript.  
+Arrays are zero-based.
+
+```javascript
+const friends = ['qui gon jin', 'obi wan kenobi', 'yoda'];
+console.log(friends);
+console.log(friends[0]);
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+```
+
+| Console Output |
+|:-:|
+| ['qui gon jin', 'obi wan kenobi', 'yoda'] |
+| qui gon jin |
+| 3 |
+| yoda |
+
+Any positon of an array simply need to be an expression.
+```javascript
+const someName = 'Sam Jackson';
+const someArray = [1, 2, 3];
+
+const randomThings = [47, 'windu', someName, 4 + 20, someArray];
+```
+
+`.push( [expression] )` to add elements to the end of the array.  
+`.push()` also returns the length of the array.  
+`.unshift( [expression] )` to add elements to the start of the array;  
+also returns the length of the array.
+
+```javascript
+const friends = ['qui gon jin', 'obi wan kenobi', 'yoda'];
+const newLength = friends.push('anakin');
+console.log(friends);
+console.log(newLength);
+```
+
+| Console Output |
+|:-:|
+| ['qui gon jin', 'obi wan kenobi', 'yoda', 'anakin'] |
+| 4 |
+
+`.pop( [expression] )` to remove elements from the end of the array.  
+`.pop()` does **not** return the length of the array; it returns the removed element.  
+`.shift( [expression] )` to remove the first element of the array;  
+also returns the removed element.
+
+```javascript
+const friends = ['qui gon jin', 'obi wan kenobi', 'yoda'];
+console.log(friends.pop());
+console.log(friends);
+```
+
+| Console Output |
+|:-:|
+| 'yoda' |
+| ['qui gon jin', 'obi wan kenobi'] |
+
+`.indexOf( [expression ] )` to get the index / position of the element in the array.
+
+```javascript
+const friends = ['qui gon jin', 'obi wan kenobi'];
+console.log(friends.indexOf('obi wan kenobi'));
+```
+
+| Console Output |
+|:-:|
+| 1 |
+
+`.includes( [expression ] )` also gets the index / position of the element in the array,  
+but it also performs type checking.
+
+```javascript
+const arr = ['qui gon jin', 'obi wan kenobi', '47', 42];
+console.log(arr.indexOf('47'));
+console.log(arr.includes(47));
+```
+
+| Console Output |
+|:-:|
+| 2 |
+| false |
+
 **Objects** are good for unstructured data.  
 You can access the properties of an object using **dot .** or **bracket []** notation.  
 You can build expressions with **bracket [] notation**.
