@@ -802,26 +802,109 @@ Looping through an array.
 `continue` exits the current iteration of the loop and **continues** to the next one.  
 `break` terminates the loop.  
 ```javascript
-const obj = [
+const arr = [
     'Michael',
     'Scott',
     45,
     'Regional Manager',
     ['Dwight','Kevin','Oscar'] 
 ];
-for (let i = 0; i < obj.length; i++) {
-    if (typeof obj[i] === 'number') continue;
-    console.log(obj[i], typeof obj[i]);
+// continue
+for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') continue;
+    console.log(arr[i], typeof arr[i]);
 }
-for (let i = 0; i < obj.length; i++) {
-    if (typeof obj[i] === 'number') break;
-    console.log(obj[i], typeof obj[i]);
+// break
+for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') break;
+    console.log(arr[i], typeof arr[i]);
+}
+// backwards looping
+for (let i = arr.length - 1; i >= 0; i--) {
+    console.log(arr[i]);
 }
 ```
 
-| Console Output *(continue)* | Console Output *(break)* |
-|:-:|:-:|
-| Michael string | Michael string |
-| Scott string | Scott string |
-| Regional Manager string |  |
-| ["Dwight", "Kevin", "Oscar"] |  |
+| Console Output *(continue)* | Console Output *(break)* | Console Output *(backwards looping)* |
+|:-:|:-:|:-:|
+| Michael string | Michael string | ["Dwight", "Kevin", "Oscar"] |
+| Scott string | Scott string | Regional Manager |
+| Regional Manager string |  | 45 |
+| ["Dwight", "Kevin", "Oscar"] |  | Scott |
+|  |  | Michael |
+
+A loop within a loop:
+```javascript
+// runs through first iteration
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`--- Starting exercise ${exercise} ---`);
+    // runs through all iterations
+    for (let rep = 1; rep < 4; rep++) {
+        console.log(`Exercise ${exercise} : Lifting weights rep ${rep}`);
+    }
+}
+```
+
+| Console Output |
+|:-:|
+| --- **Starting exercise 1** --- |
+| Exercise 1 : Lifting weights rep 1 |
+| Exercise 1 : Lifting weights rep 2 |
+| Exercise 1 : Lifting weights rep 3 |
+| --- **Starting exercise 2** --- |
+| Exercise 2 : Lifting weights rep 1 |
+| Exercise 2 : Lifting weights rep 2 |
+| Exercise 2 : Lifting weights rep 3 |
+| --- **Starting exercise 3** --- |
+| Exercise 3 : Lifting weights rep 1 |
+| Exercise 3 : Lifting weights rep 2 |
+| Exercise 3 : Lifting weights rep 3 |
+
+Looping through an **array of arrays**:
+
+```javascript
+const blue = [
+    ['I\'m', 'blue'],
+    ['da', 'ba', 'dee'],
+    ['da', 'ba', 'daa'],
+];
+
+for (let i = 0; i < blue.length; i++) {
+    // console.log(blue[i]);
+    for (let j = 0; j < blue[i].length; j++) {
+        console.log(blue[i][j]);
+    }
+}
+```
+
+| Console Output |
+|:-:|
+| I'm  |
+| blue  |
+| da  | 
+| ba  |
+| dee  |
+| da  |
+| ba  |
+| daa  |
+
+`[counter]; while ( [condition] ) { [instruction]; [increment] }`  
+to declare a **while loop**.  
+A **while loop** doesn't necessarily need a counter.  
+It can have a terminating condition.
+
+```javascript
+let rep = 1;
+while (rep <= 5) {
+    console.log(`Lifting weights rep ${rep}`);
+    rep++;
+}
+```
+
+| Console Output |
+|:-:|
+| Lifting weights rep 1 |
+| Lifting weights rep 2 |
+| Lifting weights rep 3 |
+| Lifting weights rep 4 |
+| Lifting weights rep 5 |
