@@ -74,7 +74,65 @@ ng serve
 Your project should now be running on   `http://localhost:4200`  
 that you can navigate to with your browser.
 
+# Section 2 | The Angular Frontend
+
 **Angular Components** (`app.component.ts`) are rendered with custom HTML selectors.
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'mean-course';
+}
+```
+
+(`index.html`)
+
 ```html
+...
+
 <app-root></app-root>
+
+...
+```
+
+`app.module.ts` contains all the declarations for the project components.  
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
+`main.ts` is where the code is executed first.
+```ts
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
 ```
