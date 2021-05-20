@@ -23,7 +23,7 @@ These notes are based of off this course:
 * Object-Oriented JS
 * Mapty Project
 * Asynchronous JS
-* Modern JS Applications
+* Modern JA Applications
 * Forkify Project
 * Deployment & Git
 
@@ -656,9 +656,94 @@ So there are **3 different ways** of writing functions:
   const calcAge = birthYear => 2037 - birthYear;
   ```
 
+**Arrays & Objects** are the most important data structures in JavaScript.  
+Arrays are zero-based.
+
+```javascript
+const friends = ['qui gon jin', 'obi wan kenobi', 'yoda'];
+console.log(friends);
+console.log(friends[0]);
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+```
+
+| Console Output |
+|:-:|
+| ['qui gon jin', 'obi wan kenobi', 'yoda'] |
+| qui gon jin |
+| 3 |
+| yoda |
+
+Any positon of an array simply need to be an expression.
+```javascript
+const someName = 'Sam Jackson';
+const someArray = [1, 2, 3];
+
+const randomThings = [47, 'windu', someName, 4 + 20, someArray];
+```
+
+`.push( [expression] )` to add elements to the end of the array.  
+`.push()` also returns the length of the array.  
+`.unshift( [expression] )` to add elements to the start of the array;  
+also returns the length of the array.
+
+```javascript
+const friends = ['qui gon jin', 'obi wan kenobi', 'yoda'];
+const newLength = friends.push('anakin');
+console.log(friends);
+console.log(newLength);
+```
+
+| Console Output |
+|:-:|
+| ['qui gon jin', 'obi wan kenobi', 'yoda', 'anakin'] |
+| 4 |
+
+`.pop( [expression] )` to remove elements from the end of the array.  
+`.pop()` does **not** return the length of the array; it returns the removed element.  
+`.shift( [expression] )` to remove the first element of the array;  
+also returns the removed element.
+
+```javascript
+const friends = ['qui gon jin', 'obi wan kenobi', 'yoda'];
+console.log(friends.pop());
+console.log(friends);
+```
+
+| Console Output |
+|:-:|
+| 'yoda' |
+| ['qui gon jin', 'obi wan kenobi'] |
+
+`.indexOf( [expression ] )` to get the index / position of the element in the array.
+
+```javascript
+const friends = ['qui gon jin', 'obi wan kenobi'];
+console.log(friends.indexOf('obi wan kenobi'));
+```
+
+| Console Output |
+|:-:|
+| 1 |
+
+`.includes( [expression ] )` also gets the index / position of the element in the array,  
+but it also performs type checking.
+
+```javascript
+const arr = ['qui gon jin', 'obi wan kenobi', '47', 42];
+console.log(arr.indexOf('47'));
+console.log(arr.includes(47));
+```
+
+| Console Output |
+|:-:|
+| 2 |
+| false |
+
 **Objects** are good for unstructured data.  
 You can access the properties of an object using **dot .** or **bracket []** notation.  
-You can build expressions with **bracket [] notation**.
+You can build expressions with **bracket [] notation**.  
+Any function that is attached to an object is called a **method**.  
 
 ```javascript
 const obj = {
@@ -666,9 +751,17 @@ const obj = {
     lastName: 'Scott',
     age: 55 - 10,
     job: 'Regional Manager'
+    // this property holds a method
+    calcAge: function (birthYear) {
+        return 2037 - birthYear;
+    }
 };
 console.log(obj.firstName);
 console.log(['lastName']);
+// dot notation
+console.log(obj.calcAge(1990));
+// bracket notation
+console.log(obj['calcAge'](1990));
 
 const nameKey = 'Name';
 console.log(obj['first' + nameKey]);
@@ -679,5 +772,139 @@ console.log(obj['last' + nameKey]);
 |:-:|
 | Michael |
 | Scott |
+| 47 |
+| 47 |
 | Michael |
 | Scott |
+
+`for( [counter]; [condition]; [increment] ) { [instruction] }` to declare a **for loop** control statement.
+
+```javascript
+for(let counter = 1; counter <= 10; counter++) {
+    console.log(`Dip dip potato chip ${counter}`);
+}
+```
+
+| Console Output |
+|:-:|
+| Dip dip potato chip 1 |
+| Dip dip potato chip 2 |
+| Dip dip potato chip 3 |
+| Dip dip potato chip 4 |
+| Dip dip potato chip 5 |
+| Dip dip potato chip 6 |
+| Dip dip potato chip 7 |
+| Dip dip potato chip 8 |
+| Dip dip potato chip 9 |
+| Dip dip potato chip 10 |
+
+Looping through an array.  
+`continue` exits the current iteration of the loop and **continues** to the next one.  
+`break` terminates the loop.  
+```javascript
+const arr = [
+    'Michael',
+    'Scott',
+    45,
+    'Regional Manager',
+    ['Dwight','Kevin','Oscar'] 
+];
+// continue
+for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') continue;
+    console.log(arr[i], typeof arr[i]);
+}
+// break
+for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') break;
+    console.log(arr[i], typeof arr[i]);
+}
+// backwards looping
+for (let i = arr.length - 1; i >= 0; i--) {
+    console.log(arr[i]);
+}
+```
+
+| Console Output *(continue)* | Console Output *(break)* | Console Output *(backwards looping)* |
+|:-:|:-:|:-:|
+| Michael string | Michael string | ["Dwight", "Kevin", "Oscar"] |
+| Scott string | Scott string | Regional Manager |
+| Regional Manager string |  | 45 |
+| ["Dwight", "Kevin", "Oscar"] |  | Scott |
+|  |  | Michael |
+
+A loop within a loop:
+```javascript
+// runs through first iteration
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`--- Starting exercise ${exercise} ---`);
+    // runs through all iterations
+    for (let rep = 1; rep < 4; rep++) {
+        console.log(`Exercise ${exercise} : Lifting weights rep ${rep}`);
+    }
+}
+```
+
+| Console Output |
+|:-:|
+| --- **Starting exercise 1** --- |
+| Exercise 1 : Lifting weights rep 1 |
+| Exercise 1 : Lifting weights rep 2 |
+| Exercise 1 : Lifting weights rep 3 |
+| --- **Starting exercise 2** --- |
+| Exercise 2 : Lifting weights rep 1 |
+| Exercise 2 : Lifting weights rep 2 |
+| Exercise 2 : Lifting weights rep 3 |
+| --- **Starting exercise 3** --- |
+| Exercise 3 : Lifting weights rep 1 |
+| Exercise 3 : Lifting weights rep 2 |
+| Exercise 3 : Lifting weights rep 3 |
+
+Looping through an **array of arrays**:
+
+```javascript
+const blue = [
+    ['I\'m', 'blue'],
+    ['da', 'ba', 'dee'],
+    ['da', 'ba', 'daa'],
+];
+
+for (let i = 0; i < blue.length; i++) {
+    // console.log(blue[i]);
+    for (let j = 0; j < blue[i].length; j++) {
+        console.log(blue[i][j]);
+    }
+}
+```
+
+| Console Output |
+|:-:|
+| I'm  |
+| blue  |
+| da  | 
+| ba  |
+| dee  |
+| da  |
+| ba  |
+| daa  |
+
+`[counter]; while ( [condition] ) { [instruction]; [increment] }`  
+to declare a **while loop**.  
+A **while loop** doesn't necessarily need a counter.  
+It can have a terminating condition.
+
+```javascript
+let rep = 1;
+while (rep <= 5) {
+    console.log(`Lifting weights rep ${rep}`);
+    rep++;
+}
+```
+
+| Console Output |
+|:-:|
+| Lifting weights rep 1 |
+| Lifting weights rep 2 |
+| Lifting weights rep 3 |
+| Lifting weights rep 4 |
+| Lifting weights rep 5 |
