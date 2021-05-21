@@ -286,4 +286,71 @@ A **RESTful API** can be built with a NodeJS Express backend.
   * It exposes **URLs or paths**.
   * **HTTP** *(GET, POST, PUT, DELETE, etc)* is used for the APIs requests *(AJAX; JSON)*.
 
-**Importing** in NodeJS:
+To run a node file called `server.js` run:
+```sh
+node server.js
+```
+
+**Importing** in NodeJS. `require( [packageName] )`:
+```js
+const http = require('http');
+```
+
+To create a new server instance:  
+**req**uest, **res**ponse are the arrow function's arguments.
+```js
+const server = http.createServer((req, res) => { });
+```
+
+To access the **port** number to listen on dynamically use `process.env.PORT`:  
+server.listen(process.env.PORT || 3000);
+
+To install and use NodeJS **Express**:
+```sh
+npm i --save express
+```
+```js
+/* app.js */
+
+const express = require('express');
+// This returns an Express app;
+// a big chain of middlewares
+// applied to incoming requests
+const app = express();
+```
+
+To export:
+```js
+// The app is registered on the export object
+module.exports = app
+```
+
+To import the `app`:
+```js
+/* server.js */
+
+const http = require('http');
+const app = require('./app');
+const port = process.env.PORT || 3000;
+// This tells Express which port to use.
+app.set('port', port);
+
+const server = http.createServer(app);
+
+server.listen(port);
+```
+
+To install `nodemon` *(node monitor)* to prevent manual restarting of the server: *(`--save-dev` because it's a development only dependency)*
+```sh
+npm i --save-dev nodemon
+```
+
+**CORS** - Cross-Origin Resource Sharing.  
+Allows for communication between ports.
+
+**body-parser** parses bodies of incoming request data.
+```sh
+npm i --save body-parser
+```
+
+# Section 4 | Working with MongoDB 

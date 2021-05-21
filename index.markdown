@@ -7,6 +7,8 @@ permalink: index
 ---
 # Select one of the icons to see my notes.
 
+> **DISCLAIMER**: If you have found this site by some means just know that these are my personal notes. So they definitely made sense to me at the time of their writing. They're not meant as a guide or walkthrough. Good luck and may the code be with you, always.
+
 ### Coffee Ipsum
 
 Arabica Acerbic Affogato Aftertaste Aged Americano And Aroma, bar panna so Barista cortado trifecta extraction, skinny aftertaste filter java cultivar cinnamon. Mazagran trade Barista french and Acerbic acerbic Aged milk cinnamon origin carajillo, mountain coffee roast mug wings Bar single viennese pumpkin go pot, dripper crema flavour mocha At bar sit medium au breve. Espresso Brewed Blue iced Americano robust whipped, bar percolator  grounds go saucer robusta, Au shop Affogato Bar aged coffee, Barista blue strong origin aftertaste. Blue skinny coffee breve Brewed acerbic, siphon steamed And foam, qui Arabica ut latte. Go brewed At aftertaste sweet cinnamon caffeine rich strong caramelization Aftertaste, Body roast body frappuccino Beans extraction sit americano Aroma.
