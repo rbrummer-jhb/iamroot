@@ -92,7 +92,8 @@ export class AppComponent {
 }
 ```
 
-(`index.html`)
+| index.html |
+|:-:|
 
 ```html
 ...
@@ -192,8 +193,9 @@ export class PostCreateComponent {
     ...
 }
 ```
+| post-create.component.html |
+|:-:|
 ```html
-<!-- post-create.component.html -->
 <button (click)="onAddPost()">Save Post</button>
 <p>{{ newPost }}</p>
 ```
@@ -207,7 +209,7 @@ Use `[]` brackets to bind the `newPost` variable to it.
 <textarea [value]="newPost"></textarea>
 ```
 
-Use `#` in the HTML tag to create a custom property for that tag:
+Use `#` in the HTML tag to create a **custom property/reference** for that tag:
 ```html
 <textarea [value]="newPost" #postInput></textarea>
 ```
@@ -235,6 +237,26 @@ Angular Material has its own **custom HTML tags & style selectors**.
 You can create **Angular models** using an **Interface**; it's like a class; it defines what an object looks like, but it cannot be instantiated. It's more like a contract; it can be used to create your own type.
 
 If Angular detects a form, you can omit two way binding `[(ngModel)]` and instead use `ngModel` as an **attribute** paired with a name property.
+
+| post-create.component.html |
+|:-:|
 ```html
 <input type="text" name="title" ngModel>
 ```
+
+You can get access to the form object by using a **custom reference**.  
+You can also add validators *(required, minlength="", etc)*  
+| post-create.component.html |
+|:-:|
+```html
+<form (submit)="onAddPost(postForm)" #postForm="ngForm">
+  ...
+    <input type="text" name="title" ngModel minlength="5" required>
+```
+
+**Observers subscribe to Observables**.  
+Observables establish and manage the subscription.  
+There are 3 methods that are called on the observer's side:
+* next() 
+* error()
+* complete()
