@@ -1,7 +1,4 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 css: mean
 layout: mean
 permalink: /mean/
@@ -193,8 +190,10 @@ export class PostCreateComponent {
     ...
 }
 ```
+
 | post-create.component.html |
 |:-:|
+
 ```html
 <button (click)="onAddPost()">Save Post</button>
 <p>{{ newPost }}</p>
@@ -213,6 +212,10 @@ Use `#` in the HTML tag to create a **custom property/reference** for that tag:
 ```html
 <textarea [value]="newPost" #postInput></textarea>
 ```
+
+| post-create.component.ts |
+|:-:|
+
 ```ts
 export class PostCreateComponent {
     newPost = 'No Content';
@@ -240,14 +243,17 @@ If Angular detects a form, you can omit two way binding `[(ngModel)]` and instea
 
 | post-create.component.html |
 |:-:|
+
 ```html
 <input type="text" name="title" ngModel>
 ```
 
 You can get access to the form object by using a **custom reference**.  
 You can also add validators *(required, minlength="", etc)*  
+
 | post-create.component.html |
 |:-:|
+
 ```html
 <form (submit)="onAddPost(postForm)" #postForm="ngForm">
   ...
