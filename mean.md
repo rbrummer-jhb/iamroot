@@ -81,7 +81,9 @@ that you can navigate to with your browser.
 import { Component } from '@angular/core';
 
 @Component({
+  // this defines the custom html tag
   selector: 'app-root',
+  // this defines the html file that will be parsed by angular
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -135,4 +137,104 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+```
+
+To create a new component *(with a template, testing & style file)*:
+```sh
+ng generate component post-create
+```
+
+It's a good practice to have all components in their own directories.  
+`src/app/components/post-create/post-create.component.ts...` 
+
+You need **import & declare** your component in `app.module.ts` in order for Angular to render it.
+```ts
+...
+import { PostCreateComponent } from './components/post-create/post-create.component';
+
+@NgModule({
+    declarations: [
+        AppComponent,
+        PostsCreateComponent
+    ],
+    ...
+})
+...
+```
+To bind to the **click event** of a button element in the component template *(html)*:
+```html
+<button (click)="onAddPost()">Save Post</button>
+```
+Define the method to be bound in the component class *(ts)*:
+```ts
+export class PostCreateComponent {
+    ...
+
+    onAddPost() {
+        alert('Post added');
+    }
+
+    ...
+}
+```
+Define a variable in your component class and **interpolate** it in the component template:  
+```ts
+// post-create.component.ts
+export class PostCreateComponent {
+    newPost = '';
+    
+    ...
+
+    onAddPost() {
+        this.newPost = 'Hello from the class!';
+    }
+
+    ...
+}
+```
+```html
+<!-- post-create.component.html -->
+<button (click)="onAddPost()">Save Post</button>
+<p>{{ newPost }}</p>
+```
+
+HTML elements in the DOM *(Document Object Model)* and in JavaScript are just JavaScript objects with a couple of properties, events, attributes, etc.  
+Angular allows us to **bind** these.
+
+The `<textarea></textarea>` tag has a **value** property.  
+Use `[]` brackets to bind the `newPost` variable to it.
+```html
+<textarea [value]="newPost"></textarea>
+```
+
+Use `#` in the HTML tag to create a custom property for that tag:
+```html
+<textarea [value]="newPost" #postInput></textarea>
+```
+```ts
+export class PostCreateComponent {
+    newPost = 'No Content';
+
+    ...
+
+    onAddPost(postInput: HTMLTextAreaElement) {
+        this.newPost = postInput.value;
+    }
+}
+```
+`()` brackets to **event bind**.  
+`[]` brackets to **property & attribute bind**.  
+`[()]` 'banana-in-a-box' brackets to **two-way bind** class variables.
+
+To use [Angular Material](https://material.angular.io/) styles:
+```sh
+ng add @angular/material
+```
+Angular Material has its own **custom HTML tags & style selectors**.
+
+You can create **Angular models** using an **Interface**; it's like a class; it defines what an object looks like, but it cannot be instantiated. It's more like a contract; it can be used to create your own type.
+
+If Angular detects a form, you can omit two way binding `[(ngModel)]` and instead use `ngModel` as an **attribute** paired with a name property.
+```html
+<input type="text" name="title" ngModel>
 ```
