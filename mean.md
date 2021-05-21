@@ -253,6 +253,7 @@ You can also add validators *(required, minlength="", etc)*
 
 | post-create.component.html |
 |:-:|
+|   |
 
 ```html
 <form (submit)="onAddPost(postForm)" #postForm="ngForm">
@@ -268,3 +269,21 @@ There are 3 methods that are called on the observer's side:
 * complete()
 
 # Section 3 | Adding NodeJS
+
+**Express** is a JavaScript runtime that runs on a server.  
+It's simply a framework that builds up on NodeJS.
+
+`ng serve` actually uses a NodeJS server behind the scenes, but it only provides a development server.
+
+There are **2 ways** of connecting an Angular & NodeJS backend:
+* Node Express App that serves the Angular SPA. Handles **requests & responses**.
+* 2 Separate Servers:
+  * Node Express for business logic, authentication, data storage, etc.
+  * Static host that returns the Angular SPA.
+
+A **RESTful API** can be built with a NodeJS Express backend.  
+* REST *(**Re**presentational **S**tate **T**ransfer)*:
+  * A server-side 'app'.
+  * Traditional web apps request and receive HTML pages.
+  * A stateless backend *(It doesn't care which API connects to it)*.
+  * It exposes **URLs or paths**.
