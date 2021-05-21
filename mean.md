@@ -89,10 +89,9 @@ export class AppComponent {
 }
 ```
 
-| index.html |
-|:-:|
 
 ```html
+<!-- index.html -->
 ...
 
 <app-root></app-root>
@@ -102,6 +101,7 @@ export class AppComponent {
 
 `app.module.ts` contains all the declarations for the project components.  
 ```ts
+// app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -123,6 +123,7 @@ export class AppModule { }
 
 `main.ts` is where the code is executed first.
 ```ts
+// main.ts
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -191,10 +192,10 @@ export class PostCreateComponent {
 }
 ```
 
-| post-create.component.html |
-|:-:|
+
 
 ```html
+<!-- post-create.component.html -->
 <button (click)="onAddPost()">Save Post</button>
 <p>{{ newPost }}</p>
 ```
@@ -213,10 +214,9 @@ Use `#` in the HTML tag to create a **custom property/reference** for that tag:
 <textarea [value]="newPost" #postInput></textarea>
 ```
 
-| post-create.component.ts |
-|:-:|
 
 ```ts
+// post-create.component.ts
 export class PostCreateComponent {
     newPost = 'No Content';
 
@@ -241,21 +241,18 @@ You can create **Angular models** using an **Interface**; it's like a class; it 
 
 If Angular detects a form, you can omit two way binding `[(ngModel)]` and instead use `ngModel` as an **attribute** paired with a name property.
 
-| post-create.component.html |
-|:-:|
 
 ```html
+<!-- post-create.component.html -->
 <input type="text" name="title" ngModel>
 ```
 
 You can get access to the form object by using a **custom reference**.  
 You can also add validators *(required, minlength="", etc)*  
 
-| post-create.component.html |
-|:-:|
-|   |
 
 ```html
+<!-- post-create.component.html -->
 <form (submit)="onAddPost(postForm)" #postForm="ngForm">
   ...
     <input type="text" name="title" ngModel minlength="5" required>
@@ -287,3 +284,6 @@ A **RESTful API** can be built with a NodeJS Express backend.
   * Traditional web apps request and receive HTML pages.
   * A stateless backend *(It doesn't care which API connects to it)*.
   * It exposes **URLs or paths**.
+  * **HTTP** *(GET, POST, PUT, DELETE, etc)* is used for the APIs requests *(AJAX; JSON)*.
+
+**Importing** in NodeJS:
