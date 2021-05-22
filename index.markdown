@@ -7,7 +7,8 @@ permalink: index
 ---
 # Select one of the icons to see my notes.
 
-> **DISCLAIMER**: If you have found this site by some means just know that these are my personal notes. So they definitely made sense to me at the time of their writing. They're not meant as a guide or walkthrough. Good luck and may the code be with you, always.
+> **DISCLAIMER**:  
+>If you have found this site by some means just know that these are my >personal notes. So they definitely made sense to me at the time of >their writing. They're not meant as a guide or walkthrough. Good luck >and may the code be with you, always. 
 
 ### Coffee Ipsum
 
