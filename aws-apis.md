@@ -23,7 +23,7 @@ We are going to look at **EC2** - **Elastic Cloud Computing**.
     * You could install a web server, a PHP interpreter, etc  
     on these instances, and host a website.
 
-## Serverless Development
+### Serverless Development
 
 Web App / Mobile App ⟸⟹ Backend *(REST API)* ⟸⟹ Server  
 * More servers may be required with traffic spikes.
@@ -102,7 +102,7 @@ it can be used to validate incoming data.
 **'Binary Support'** adds support for sending files along with API requests;  
 you have to register the file types here.  
 
-## Creating a Resource
+### Creating a Resource
 
 A **'proxy resource'** catches all requests.  
 **CORS**: Cross Origin Resource Sharing.  
@@ -118,10 +118,37 @@ You can define permissions for the function with **'Roles'**.
 
 You need to set CORS headers on all the methods involved.
 
-**'Lambda Proxy Integration'** in 'Integration Request' ensures that all the request data is sent and not just the request body. You can pass the complete request to Lambda.
+**'Lambda Proxy Integration'** in 'Integration Request' ensures that all the request data is sent and not just the request body. You can pass the complete request to Lambda.  
+> Be sure to **save & deploy** code changes in Lambda.  
+Lambda stores its logs in **'CloudWatch'**.  
+Maybe it's a good practice to have Lambda only work with the data it needs.  
+You can change the shape of the data that is sent to Lambda in **'Integration Request'** using **'Mapping Templates'**.
+* The template can use the **Apache Velocity** language.
 
-> Be sure to **save & deploy** code changes in Lambda.
+`$input` is a reserved variable, provided by AWS which gives you access to the input payload *(request body, params, headers)* of your request.  
+[http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html)  
+The `$` dollar sign in the `.json()` method refers to the request body.  
+The properties defined here can then be accessed on the `event` object in the Lambda function.  
+```json
+{
+"age" : $input.json('$.personData.age')
+}
+```
 
-Lambda stores its logs in **'CloudWatch'**.
+You can create a **'Model'** to only allow certain data. *(Models are optional)*  
+Only an object with *age, height & income* properties can be received.
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "CompareData",
+  "type": "object",
+  "properties": {
+    "age": {"type": "integer"},
+    "height": {"type": "integer"},
+    "income": {"type": "integer"}
+  },
+  "required": ["age", "height", "income"]
+}
+```
 
-Maybe it's a good practice to have Lambda only work with the data it needs.
+You can add **'Path Parameters'** with their own methods to your resources `/{parameter-name}`.
