@@ -87,9 +87,12 @@ AWS API Gateway:
 
 **'Resources'** made in AWS API Gateway are NOT live.  
 You have to 'Actions/**Deploy API'** to expose it to the web.  
-*
-*
-*
+> An **endpoint** consists of the resource/path & the method / the type of request *(GET, PUT, POST)*
+* The **Method Requests** box ensures incoming requests have a certain shape, contain certain data *(headers)* & fulfill certain requirements.
+* The **Integration Request** box maps/transforms incoming data before it reaches the API.
+* The **Integration Response** box allows for setting headers & mapping templates to send back.
+* The **Method Response** box ensures outgoing responses have a certain shape, contain certain data *(headers)* & fulfill certain requirements.
+
 A **snapshot** of the API is taken & deployed to the web.  
 **'Stages'** contains different versions of your API and the info of its deployment.  
 **'Authorizers'** adds authentication to the API's resources/paths.  
@@ -98,3 +101,27 @@ it can be used to validate incoming data.
 **'Documentation'** allows for documenting APIs.  
 **'Binary Support'** adds support for sending files along with API requests;  
 you have to register the file types here.  
+
+## Creating a Resource
+
+A **'proxy resource'** catches all requests.  
+**CORS**: Cross Origin Resource Sharing.  
+> A security model that prevents a server from accessing resources from another server.  
+> This is necessary for the client to speak to the API; it checks the headers.  
+> CORS will create an 'OPTIONS' method & automatically configure the right headers
+> to send back to the client. You can see these headers in 'Integration Response' under
+> the resource's method response 'Header Mappings'.
+
+When creating a new Lambda function, the **handler** *(index.handler)* looks for the filename `index.` and the function name `.handler`.  
+This handler `index.fn` looks for a file called `index` and a function within it called `fn`.  
+You can define permissions for the function with **'Roles'**.
+
+You need to set CORS headers on all the methods involved.
+
+**'Lambda Proxy Integration'** in 'Integration Request' ensures that all the request data is sent and not just the request body. You can pass the complete request to Lambda.
+
+> Be sure to **save & deploy** code changes in Lambda.
+
+Lambda stores its logs in **'CloudWatch'**.
+
+Maybe it's a good practice to have Lambda only work with the data it needs.
