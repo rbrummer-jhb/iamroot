@@ -152,3 +152,5 @@ Only an object with *age, height & income* properties can be received.
 ```
 
 You can add **'Path Parameters'** with their own methods to your resources `/{parameter-name}`.
+
+# Section 4 | Data Storage with DynamoDB
