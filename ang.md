@@ -66,8 +66,9 @@ which is the 'name' variable of this component's class (ts) -->
 <input type="text" [(ngModel)]="name" />
 ```
 
-## TypeScript Crash Course Start
 ___
+## TypeScript Crash Course Start
+
 **TypeScript** is a superset to JavaScript *(it extends JavaScript)*.  
 It offers more features to JavaScript *(strong/static typing)*.  
 TypeScript doesn't run in the browser.  
@@ -142,7 +143,7 @@ person = {
 
 // this defines an array type containing
 // objects with a specific structure
-// note square brackers at the end
+// note square brackets at the end
 let people: {
     name: string;
     age: number;
@@ -322,3 +323,229 @@ class Instructor implements Human {
 ```
 ## TypeScript Crash Course End 
 ___
+
+To download **Bootstrap** for some prepared styling ('i' is shorthand for `install`):
+```sh
+npm i --save bootstrap@3
+```
+You can then add `bootstrap.min.css` to `angular.json/...architect.build.options.styles`.
+
+# Section 2 | The Basics
+
+Angular is good for building SPAs *(Single-Page Applications)*.  
+`index.html` is the single page.
+
+Your `app.component.ts` *(class)* has a `selector` property in its `@Component` decorator.  
+The value of this property is the custom HTML element tag that you can use  
+to render its `app.component.html` *(template)* in `index.html`.
+```ts
+// app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+}
+```
+
+```html
+<!-- app.component.html -->
+<h3>Hello from AppComponent</h3>
+```
+
+```html
+<!-- index.html -->
+<app-root></app-root>
+```
+
+However, `main.ts` is the code that is executed first.  
+`AppModule (app.module.ts)` is passed as an argument here.
+```ts
+// main.ts
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+```
+`AppComponent (app.component.ts)` is then passed to `AppModule (app.module.ts)`  
+as an argument to its `bootstrap` property as an array, value inside its `@NgModule` decorator.
+```ts
+// app.module.ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+**Shorthand:**  
+`index.html` ⟸ `main.ts` ⟸ `AppModule (app.module.ts)` ⟸ `AppComponent (app.component.ts)` ⟸ `app.component.html` ⟸ `app.component.css`
+
+However, **'AppComponent'** is special; it is the **root** component.  
+All the other created components will be added to this component,  
+and they need to be imported into `AppModule (app.module.ts)`,  
+declared in the `declarations` property's array.
+
+Each of your components can be rendered on a single HTML page using this process.
+
+To create a new component with the Angular CLI:
+```sh
+ng generate component component-name
+# shorthand:
+ng g c component-name
+```
+This creates a new component:
+* class *(.ts)*
+* template *(.html)*
+* style *(.css)*
+* test *(.spec.ts)*
+
+You can turn your component's **selector** *(element tag)* into an attribute or class instead by enclosing it with `[]` square brackets or prefixing it with `.` a dot.  
+You **cannot**, however, make the select an id or pseudo-class.
+```ts
+// name.component.ts
+...
+// as an element
+selector: 'app-name'
+as an attribute/
+selector: '[app-name]'
+// as a class
+selector: '.app-name'
+...
+```
+Now it must be an attribute or class of an element in order to be rendered.
+```html
+<!-- app.component.html -->
+
+<!-- as an element -->
+<app-name></app-name>
+<!-- as an attribute -->
+<div app-name></div>
+<!-- as a class -->
+<div class="app-name"></div>
+```
+
+**Data Binding** is communication between the TypeScript code *(business logic)* and the template *(HTML)*
+
+To bind the default 'disabled' HTML attribute to a component property or method:  
+**Note: Attribute Binding** uses `[]` square brackets:
+```html
+<!-- name.component.html -->
+
+<!-- bound to a property -->
+<button [disabled]="allowButtonPress"></button>
+<!-- bound to a method -->
+<button [disabled]="allowButton()"></button>
+```
+
+```ts
+// name.component.ts
+...
+allowButtonPress = false;
+// OR
+allowButton() {
+    return this.allowButtonPress;
+}
+...
+```
+
+To bind the 'click' event to a component property or method:  
+**Note: Event Binding** uses `()` round  brackets:
+```html
+<!-- name.component.html -->
+<button (click)="onButtonPress()"></button>
+<p>{{ buttonStatus }}</p>
+```
+
+```ts
+// name.component.ts
+...
+buttonStatus = 'Button not pressed!';
+
+onButtonPress() {
+    this.buttonStatus = 'Button pressed!';
+}
+...
+```
+
+You can fetch the event object from the DOM by passing `$event` to a method:
+```html
+<!-- name.component.html -->
+<input type="text" (input)="getEventData($event)">
+<p>{{ eventDataTargetValue }}</p>
+```
+
+```ts
+// name.component.ts
+eventDataTargetValue = '';
+
+getEventData(event: any) {
+    this.eventDataTargetValue = event.target.value;
+}
+```
+
+`[()]` *banana-in-a-box brackets* allow for 2 way data binding.  
+The value from the DOM and the corresponding class property changes concurrently. 
+
+**Directives** are instructions for the DOM.  
+The `*ngIf` **structural directive** can be used to check a boolean status of a property or variable.  
+**Structural Directives** are often prefixed with `*` asterisk.  
+**Attribute Directives** often look like attributes.
+
+`ngStyle` is an **attribute directive** that can be used to dynamically style elements. It expects CSS styling in a **json**:
+```html
+<!-- name.component.html -->
+<p [ngStyle]="{background: getColor()}"></p>
+```
+
+```ts
+// name.component.ts
+...
+serverStatus = 'offline';
+...
+getColor() {
+    return this.serverStatus === 'online' ? 'green' : 'red';
+}
+```
+
+`ngClass` is a **class directive** that can be used to dynamically style element classes. It expects TypeScript logic:
+```html
+<!-- name.component.html -->
+<p [ngClass]="{online: serverStatus === 'online'}"></p>
+```
+
+```ts
+// name.component.ts
+...
+styles: [`
+        .online {
+            color: white;
+        }
+    `]
+...
+serverStatus = 'online';
+...
+```
