@@ -55,3 +55,21 @@ A Jupyter Notebook is a environment with individual cells where you can write Py
 Jupyter Notebook files end `.jpynb`.
 
 You need to `Shutdown` a Jupyter Notebook before deleting it.
+
+`print( [expression] )` to print to the command line.
+```python
+print('hello world')
+```
+
+Jupyter Notebooks support Markdown.
+
+Basic Python data types:
+| Name | Type | Description |
+|:-|:-|:-|
+| Integers | `int` | Whole numbers *(3, 300, 200)* |
+| Floating `Point` | float | Deciaml Numbers *(2.3, 4.6, 100.0)* |
+| Strings | `str` | Ordered sequence of characters *("hello", "Sammy", "2000")* |
+| Dictionaries | `dict` | Unordered key:value pairs *{"myKey": "value", "name": "Frank"}* |
+| Tuples | `tup` | Ordered **immutable** sequence of objects *(10, "hello", 200.3)* |
+| Sets | `set` | Unordered collection of unique objects *("a", "b")* |
+| Booleans | `bool` | Logical value indicating **True** of **False** |
