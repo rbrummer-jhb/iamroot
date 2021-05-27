@@ -531,7 +531,7 @@ getColor() {
 }
 ```
 
-`ngClass` is a **class directive** that can be used to dynamically style element classes. It expects TypeScript logic:
+`ngClass` is a **class directive** that can be used to dynamically style element classes. It expects TypeScript logic *(the first argument is a class name, enclose with `''` single quotes if it contains `-` dashes, or use camelCase)*:
 ```html
 <!-- name.component.html -->
 <p [ngClass]="{online: serverStatus === 'online'}"></p>
