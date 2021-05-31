@@ -59,6 +59,7 @@ You need to `Shutdown` a Jupyter Notebook before deleting it.
 `print( [expression] )` to print to the command line.
 ```python
 print('hello world')
+>>> hello world
 ```
 
 Jupyter Notebooks support Markdown.
@@ -73,3 +74,44 @@ Basic Python data types:
 | Tuples | `tup` | Ordered **immutable** sequence of objects *(10, "hello", 200.3)* |
 | Sets | `set` | Unordered collection of unique objects *("a", "b")* |
 | Booleans | `bool` | Logical value indicating **True** of **False** |
+
+**Python 3** performs true division by default.
+```python
+>>> 1/2
+>>> 0.5
+```
+
+Variable names cannot start with a number, have spaces, contain special symbols, or be **Python reserved keywords**.
+
+According to [PEP](https://www.python.org/dev/peps/pep-0001/#:~:text=PEP%20stands%20for%20Python%20Enhancement,a%20rationale%20for%20the%20feature.)8 *(**P**ython **E**nhancement **P**roposal)* it's good practice to keep variable names lowercase.
+
+Python has **dynamic typing**.  
+*(It changes variable types behind the scenes automatically based on the assigned value)*
+```python
+# this reassignment is legal in Python
+x = 7
+x = 'seven'
+```
+
+You can use the `type()` built-in method to check the types of variables.
+
+String slicing: `[ start index : stop index : step ]`.  
+**(Spaces also count as indexes.)**
+```python
+somestring = 'TROYBOI'
+
+print(somestring[0])
+>>> 'T'
+
+print(somestring[-1])
+>>> 'I'
+
+print(somestring[0:])
+>>> 'TROYBOI'
+
+print(somestring[0:4])
+>>> 'TROY'
+
+print(somestring[0:6:2])
+>>> 'TOB'
+```
