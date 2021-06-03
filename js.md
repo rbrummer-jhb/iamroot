@@ -934,3 +934,327 @@ You can set **breakpoints** with the Chrome developer console **debugger**.
 `ctrl+shift+j > Sources > script.js > insert into line number pane`
 
 JavaScript also has a `debugger;` statement.
+
+### Section 6 | HTML & CSS Crash Course (Optioanl)
+# Section 7 | DOM & Events Fundamentals
+
+To select an element that has a **class** or **id** and its content,  
+you can also use the `.getElementById()` method without the `#` symbol in its argument to select an element that has an **id**:
+```html
+<!-- index.html -->
+
+<p class="class-name">This is the text content!</p>
+```
+*(`.getElementById()` is supposedly faster than `.querySelector()`)*
+```js
+// script.js
+
+// for a class
+document.querySelector('.class-name');
+
+// for an id
+document.querySelector('#id-name');
+// OR
+document.getElementById('id-name');
+```
+| Console Output |
+|:-|
+| This is the text content! |
+
+## The DOM
+The **D**ocument **O**bject **M**odel is a structured representation of HTML documents.  
+It allows JavaScript to access HTML elements & styles to manipulate them.
+
+The DOM is automatically created by the browser as soon as the HTML pages loads,  
+and it has a trees structure.  
+In the tree each HTML element is one object.
+
+The DOM always start with the **document** object.  
+The `<html>` element is the first child element of the document object.  
+The `<head>` & `<body>` elements are the first child elements of the `<html>` element.
+
+The DOM is **NOT** a part of the JavaScript language.  
+The DOM and its methods are part of the Web APIs.
+The Web APIs are libraries that browsers implement that JavaScript can access.
+The Web APIs are written in JavaScript.
+
+You can get the text content of an element using the `.textContent()` method,  
+and the value of an element using the `.value()` method:
+```js
+console.log(document.querySelector('.class-name').textContent);
+console.log(document.querySelector('.class-name').value);
+```
+
+Use **camelCase** to change the style of a selected element if the style's name contains hyphens `-`.
+```js
+// 'document.querySelector('body').style.background-color' becomes:
+document.querySelector('body').style.backgroundColor = '#60b347';
+```
+
+To add an event listener to an element  
+*(the first parameter is the 'event', the second is the function)*:
+```html
+<!-- index.html -->
+
+<button class="btn">Again!</button>
+```
+```js
+// script.js
+
+// this adds an event listener to an element's 'click' event
+document.querySelector('.btn').addEventListener('click', function() {
+  // do some logic
+});
+```
+
+It's a good practice to store element selections in their own variables:
+```js
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+...
+```
+You can select multiple elements that have the same **'selector'** names with `.querySelectorAll()`:
+```js
+const btnsOpenModal = document.querySelectorAll('.show-modal');
+```
+
+You can also add events to **keys**. Keyboard events are global events.  
+When an event occurs JavaScript creates an object.  
+Key presses are stored in the **event** object.  
+`.addEventListener()`'s second function argument can accept the event object.
+
+# Section 8 | JavaScript Background Operations
+
+> JavaScript is a high-level, prototype-based object-oriented, multi-paradigm, interpreted or just-in-time complied, dynamic, single-threaded, garbage-collected programming language with first-class functions and a non-blocking event loop concurrency model. 😵
+
+* **High Level**
+  * The developer does not have to manage resources like memory allocation.
+* **Garbage Collection**
+  * JavaScript cleans memory automatically, it removes unused objects.
+* **Interpreted / Just-in-time compiled**
+  * JavaScript code is compiled to machine code inside its engine.
+* **Multi-paradigm**
+  * It supports multiple approaches of structuring code *(Procedural, OOP, FP)*.
+* **Prototype-based Object-oriented**
+  * Everything is an object except for primitives. *(Prototypal inheritance)*.
+* **First-class functions**
+  * Functions are treated as variables.
+* **Dynamic**
+  * Data types are dynamically typed.
+* **Single-threaded**
+  * JavaScript runs in one thread, it can only do one thing at a time.
+  * A thread is a set of instructions that gets executed in the CPU.
+* **Non-blocking event loop**
+  * The non-blocking event loop executes long running tasks in the background,  
+  and then puts it back into the thread.
+
+### The JavaScript Engine
+The program that executes JavaScript code.  
+The most popular JavaScript is **Chrome's V8**.  
+Any JavaScript has a **call stack** *(execution context)* and a **heap** *(unstructured memory pool that stores the objects)*.
+
+### Compilation vs Interpretation
+* In compilation, the entire source code is converted into machine code at once,  
+and written to a portable, binary file that can be execute later.
+* In interpretation, the source code is read, converted into machine code,  
+and executed all at the same time.
+* Interpretation is much slower than Compilation, but modern JavaScript makes use of both.  
+This is known as **just-in-time** compilation.
+
+
+1. Parsing *(realising)*.
+    * The code is parsed into a data structure called the Abstract Syntax Tree *(AST)*.
+    * The lines of code are split into pieces that are meaningful to the language *(**const** of **function**)*.
+    * **The AST has nothing to do with the DOM tree**.
+2. Compilation
+    * AST is compiled into machine code.
+3. Execution
+    * The machine code is then executed right away *(call stack)*.
+4. Optimization
+    * The executed code is optimized by recompiling it during execution *(multiple times)*.
+
+All these steps happen in special, inaccessible threads in the engine.
+
+The JavaScript Runtime contains the Engine, the Web APIs and the Callback Queue.
+The Node.js Runtime is the same except it has C++ Bindings & a Thread Pool instead of Web APIs.
+
+### Execution Context
+
+The first thing created in the execution context is the **Variable Environment** ( `let`, `const`, `functions()` ), then the **Scope Chain** and then the `this` keyword.  
+Top-level code, code that is not inside any functions, gets executed first *(global execution context)*.  
+Functions should only be executed when they are called, and they are executed after top-level code.  
+Separate execution contexts are created for function calls. The same goes for methods.
+
+The **global execution context** is added to the **call stack** first.  
+Then if there are any functions their execution contexts are created and added to the call stack,  
+and that becomes the **active execution context** and any variables inside this execution context get their own variable environments.  
+Once execution finishes it is popped off the stack, and the previous execution context becomse the active execution context.
+
+### Scope & Scoping (The Scope Chain)
+
+Scoping is how the program's variables are **organized & accessed**.  
+Lexical Scoping is controlled by **placement** of functions and& blocks in the code.  
+Scope is the space / environment in which a certain variable is **declared**, there is:
+* **Global** scope
+  * this is for top-level code, variables here are accessible everywhere.
+* **Function**/local scope
+  * this is for variables inside a function, they are only accessible inside the function. 
+* **Block** scope
+  * this is similar to the function scope except `var` variables are accessible from outside unlike `let` & `const`.
+  * 'block' refers to the `{}` curly brackets of a function.
+
+Nested scopes have access to the variables inside their parent scopes.
+```js
+const hero = 'Bat';
+
+function first() {
+  // has access to hero
+  if (hero === 'Bat') {
+    hero += 'man';
+
+    function second() {
+      // has access to hero
+      console.log(`I am ${hero}`);
+    }
+  }
+}
+```
+**The scope chain has nothing to do with the execution context.**
+
+### Hoisting
+
+Hoisting is when a variable is declared with the `var` keyword, but it has not been initialized with a value yet.  
+A **property** is created for it in the **Variable Environment object** with a **value** of `undefined`.  
+This allows you to access that variable, that is declared, but before it is initialized, however, this is considered a bad practice. Avoid using the `var` keyword.
+
+### 'this' Keyword
+
+`this` is a special variable that gets created for every execution context.  
+`this` points to the object that is calling its method/function.  
+Arrow functions do not get their own `this` keyword. It will simply point to the global `window` object, or to the `this` keyword of its parent object.
+
+Functions also have access to the `arguments` keyword.  
+It is only available in regular functions.  
+It can be useful for when your function is accepting more arguments than you initially specified.
+```js
+const addExpr = function(a, b) {
+    console.log(arguments);
+    return a + b;
+};
+addExpr(2, 5, 8, 12);
+```
+| Console Output |
+|:-|
+| Arguments(4) [2, 5, 8, 12, ... |
+
+
+JavaScript has 8 **Primitive** data types:
+* Number
+* String
+* Boolean
+* Undefined
+* Null
+* Symbol
+* BigInt
+
+The rest:
+* Object Literal
+* Arrays
+* Functions, etc
+
+are **objects**.
+
+Objects are reference types. They are stored right in the heap.  
+Primitives are stored in the execution context in which they are created in the call stack.
+
+You cannot change the value of `const` when working with primitives,  
+but you can when working with reference types.  
+Objects' value in the stack are **memory addresses** that point to objects in the heap.  
+This value cannot change, because memory addresses cannot change their value:
+```js
+const agent = {
+  name: 'J',
+  age: 30
+};
+// this throws TypeError
+agent = {};
+```
+You can create a **Shallow Copy** of an object using `Object.assign()`.  
+This means that only top-level code is copied; it is not a **Deep Clone**.  
+If there is another object inside this object,  
+it is not copied, it is referenced.
+```js
+const agent = {
+  name: 'J',
+  age: 30,
+  // this is an array, another object
+  // it will change for both objects
+  partners: ['K', 'worms', 'Z']
+};
+
+const agentCopy = Object.assign({}, agent);
+agentCopy.name = 'James';
+agentCopy.age = 40;
+agentCopy.partners.push('Frank');
+
+console.log(agent);
+console.log(agentCopy);
+```
+| Console Output |
+|:-|
+| name: 'J', age: 30, partners(4): ['K', 'worms', 'Z', 'Frank'] |
+| name: 'James', age: 40, partners(4): ['K', 'worms', 'Z', 'Frank'] |
+
+# Data Structures, Modern Operators & Strings
+
+### Destructuring
+
+This involves breaking down complex data structures into variables.  
+Below is array destructuring:
+```js
+const restaurant = {
+  categories: ['American', 'Italian', 'Japanese'],
+  starters: ['slide', 'ciabatta', 'maki'],
+  mains: ['smash', 'pasta', 'yakatori'],
+  order: function(starterIndex, mainIndex) {
+    return [this.starters[starterIndex], this.mains[mainIndex]];
+  }
+};
+
+const [category1, category2] = restaurant.categories;
+console.log(category1, category2);
+
+// this is a nice way to get multiple return values from a function/method
+const [starterMeal, mainMeal] = restaurant.order(2, 1);
+console.log(starterMeal, mainMeal);
+
+// the values are easily swapped with destructuring
+[mainMeal, starterMeal] = [starterMeal, mainMeal];
+```
+| Console Output |
+|:-|
+| 'American', 'Italian' |
+| 'maki', 'pasta' |
+
+Nested destructuring:
+```js
+const nested = [1, 2, [3, 4]];
+
+// notice the skip
+const [a, ,b] = nested;
+console.log(a, b);
+
+const [x, y, [z1, z2]] = nested;
+console.log(x, y, z1, z2);
+
+// setting default values
+// this is useful for when
+// data is coming from an API
+const [p=1, q=1, r=1] = [8, 9];
+console.log(p, q, r);
+```
+| Console Output |
+|:-|
+| 1, [3, 4] |
+| 1, 2, 3, 4 |
+| 8, 9, 1 |
