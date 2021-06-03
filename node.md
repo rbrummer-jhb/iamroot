@@ -255,3 +255,99 @@ You need to provide the API key and the location *(long & lat)* for the weather.
 ```http
 http://api.weatherstack.com/current?access_key=a372b20350e279caf846d60748eead19&query=37.8267,-122.4233
 ```
+
+When creating a request to an API, the `error` parameter is mostly for low-level OS errors such as a lack of internet connectivity, the `response` parameter's body could reflect errors from the API such as a broken query string *(the server cannot access the specific data you need)*:
+```js
+const request = require('request');
+
+const url = 'http://api.weatherstack.com/current?access_key=a372b20350e279caf846d64807aeed91&query=25.8640,28.0889&units=m';
+
+// Weather Stack API
+request({ url: url, json: true }, (error, response) => {
+    if (error) {
+        console.log('Unable to connect to weather service!');
+    } else {
+        const temperature = response.body.current.temperature;
+        const feelslike = response.body.current.feelslike;
+        const weatherDescription = response.body.current.weather_descriptions[0];
+        
+        console.log(`${weatherDescription}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out.`);
+    }
+});
+```
+
+**Callback**:
+```js
+const add = (a, b, callback) => {
+    setTimeout(() => {
+        callback(a + b);
+    }, 2000);
+};
+
+add(1, 4, (sum) => {
+    console.log(sum);
+});
+```
+
+**Object property shorthand**.  
+If an object has a property with a variable as a value,  
+and the property name and the variable name are the same, you can do this instead:  
+*(It's just a syntactical improvement)*
+```js
+const name = 'Andy';
+const userAge = 25;
+
+const user = {
+    name,
+    age: userAge,
+    location: 'USA',
+}
+```
+
+**Object destructuring**.  
+You can unpack an object's properties' values into new variables using less code:
+```js
+const product = {
+    label: 'Dracula',
+    author: 'Bram Stoker',
+    stock: 123,
+    price: 200
+}
+
+const {label, author, stock, price} = product;
+```
+If a property does not exist it will be created,  
+but it will not have a value:
+```js
+...
+const {label, author, stock, price, rating} = product;
+console.log(rating); // undefined
+```
+You can assign a property value to a new variable:
+```js
+const {productLabel:label, author, stock, price} = product;
+console.log(productLabel); // Dracula
+```
+You can set a default value for an inline property:
+```js
+...
+const {label, author, stock, price, rating = 5} = product;
+console.log(rating); // 5
+```
+Object destructuring can be applied in a function parameter:
+```js
+const product = {
+    label: 'Dracula',
+    author: 'Bram Stoker',
+    stock: 123,
+    price: 200
+}
+
+const transaction = (type, { label, stock }) => {
+    console.log(type, label, stock);
+}
+
+transaction('order', product);
+```
+
+# Section 7 | Web Servers (Weather App)
