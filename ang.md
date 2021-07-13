@@ -549,3 +549,102 @@ styles: [`
 serverStatus = 'online';
 ...
 ```
+
+A **Model** should just be a blueprint for created objects, and a **TypeScript** class can achieve this.
+```ts
+// recipe.model.ts
+
+export class Recipe {
+    public name: string;
+    public description: string;
+    public imagePath: string;
+
+    constructor(name: string, desc: string, imagePath: string) {
+        this.name = name;
+        this.description = desc;
+        this.imagePath = imagePath;
+    }
+}
+```
+
+**Property & Event Binding**
+* HTML Elements:
+    * Native Properties & Events
+* Directives:
+    * Custom Properties & Events
+* Components:
+    * Custom Properties & Events
+
+You can give bound properties aliases with the `@Input()` decorator by passing the name as an argument.
+```ts
+// name.component.ts
+
+...
+@Input('srvElement') element: {type: string, name: string, content: string};
+...
+```
+```html
+<!-- name.component.html -->
+
+<app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement"></app-server-element>
+```
+You can create your own events by using the `EventEmitter` module.  
+You then need to use the `@Output()` decorator to be able to emit your events to the parent component.  
+You also need methods that will call the `emit()` method.
+```ts
+// name.component.ts
+
+yourEventName = new EventEmitter<{propertyNameToEmit: string}>();
+```
+
+You can add a **reference** to any HTML element, and it will contain all the data for that element.  
+You can only declare references inside the HTML code *(the template)*, **NOT** in the TypeScript code.
+```html
+<!-- name.component.html -->
+
+<input type="text" class="form-control" #serverNameInput>
+<button class="btn btn-primary" (click)="onAddServer(serverNameInput)">Add Server</button>
+```
+
+You can overwrite a component's 'global' styles and give it its own styles with the `encapsulation` property in the component decorator.
+```ts
+@Component({
+    ...
+    encapsulation: ViewEncapsulation.ShadowDom
+})
+```
+
+You can project content into a component using `<ng-content></ng-content>` between the component's custom element tags.
+```html
+<!-- parent.component.html -->
+
+<app-child-component>
+    <p>Some other content</p>
+</app-child-component>
+```
+```html
+<!-- child.component.html -->
+
+<ng-content></ng-content>
+```
+
+### Lifecycle Hooks
+|  |  |
+|:-|:-|
+| `ngOnChanges` | Called after a bound input property changes |
+| `ngOnInit` | Called once the component is initialized |
+| `ngDoCheck` | Called during every change detection run |
+| `ngAfterContentInit` | Called after content *(ng-content)* has been projected into view |
+| `ngAfterContentChecked` | Called every time the projected content has been checked |
+| `ngAfterViewInit` | Called after the component's view *(an child views)* has been initialized |
+| `ngAfterViewChecked` | Called every time the view *(and child views)* have been checked |
+| `ngOnDestroy` | Called once the component is about to be destroyed |
+
+A **Dependency** is something a class will depend on if it needs to call a method from another class.
+
+**Hierarchical Injector**
+|  |  |
+|:-|:-|
+| `AppModule` | Same instance of Service is available **Application-wide** |
+| `AppComponent` | Same instance of Service is available for **all Components** (but **not for other Services**) |
+| Any other Component | Same instance of Service available for **the Component and all its child components** |
