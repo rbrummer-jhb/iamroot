@@ -1258,3 +1258,303 @@ console.log(p, q, r);
 | 1, [3, 4] |
 | 1, 2, 3, 4 |
 | 8, 9, 1 |
+
+Use `{}` curly brackets to destructure objects.  
+The variable names have to be the same as the object's property names  
+unless you reassign them to different names *(see second block)*:
+```js
+const agent = {
+  name: 'J',
+  age: 30,
+  partners: ['K', 'worms', 'Z']
+};
+
+const { name, age, partners } = agent;
+console.log(name, age, partners);
+```
+| Console Output |
+|:-|
+| 'J' 30 partners(3) ['K', 'worms', 'Z'] |
+
+```js
+const { name: agentName, age: agentAge, partners: agentPartners } = agent;
+console.log(agentName, agentAge, agentPartners)
+```
+You can assign a default value to a variable if the property dose not exist:
+```js
+const { weapon = 'the noisy cricket', name, age, partners } = agent;
+console.log(weapon, name, age, partners);
+```
+| Console Output |
+|:-|
+| 'the noisy cricket' 'J' 30 partners(3) ['K', 'worms', 'Z'] |
+
+Objects can also be destructured as function parameters,  
+and they can also be assigned default values:
+```js
+const restaurant = {
+  categories: ['American', 'Italian', 'Japanese'],
+  starters: ['slide', 'ciabatta', 'maki'],
+  mains: ['smash', 'pasta', 'yakatori'],
+  
+  order: function({
+    starterIndex,
+    mainIndex,
+    time = '20:00',
+    address = 'Sesame'
+  }) {
+    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+  }
+};
+
+restaurant.order({
+  starterIndex: 1,
+  mainIndex: 2
+});
+```
+| Console Output |
+|:-|
+| Order received! ciabatta and yakatori will be delivered to Sesame at 20:00 |
+
+The `...` **spread operator** unpacks array elements, and it works on all iterables *(not objects)*.  
+It's also good for merging & creating shallow copies of arrays.
+```js
+const arr = [7, 8, 9];
+const newArr = [5, 6, ...arr];
+console.log(newArr);
+
+const food = {
+  mains: ['smash', 'pasta', 'yakatori']
+}
+console.log(...food.mains);
+
+const arrShallowCopy = [...arr];
+const joinedArr = [...arr, ...newArr];
+```
+| Console Output |
+|:-|
+| (5) [5, 6, 7, 8, 9] |
+| (3) ['smash', 'pasta', 'yakatori'] |
+
+### The Rest Pattern
+
+The `...` **spread operator** unpacks elements if it is on the **right** side of the `=` **assignment operator**,  
+but if it is on the **left** side of the assignment operator it becomes the **rest operator** which packs the *rest* of the elements into a new array. It does include any skipped elements.
+```js
+// spread on the right
+const arr = [1, 2, ...[3, 4]];
+console.log(arr);
+
+// spread on the left
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+```
+| Console Output |
+|:-|
+| (4) [1, 2, 3, 4] |
+| 1 2 (3) [3, 4, 5] |
+
+**Short-circuiting** is when the boolean OR `||` operator gives precedence to its first **'truthy'** operand,  
+or when the boolean AND `&&` operator gives precedence to its first **'falsy'** operand.  
+The **Nullish Coalescing Operator** `??` returns the first **non-nullish** *(null & undefined)* value.
+```js
+// this will log 'Hello'
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+// this will log null
+console.log('Hello' && 23 && null && 'j');
+
+// this will return 0
+console.log(null ?? undefined ?? 0 ?? '');
+```
+The `for of` loop:
+```js
+const nums = [1, 2, 3, 4, 5];
+for (const num of nums) console.log(num);
+```
+| Console Output |
+|:-|
+| 1 |
+| 2 |
+| 3 |
+| 4 |
+| 5 |
+
+To get the index and the element value with a `for of` loop use destructuring & the `.entries()` method:
+```js
+const str = ['a', 'b', 'c'];
+for (const [i, e] of str.entries()) console.log(`${i} ${e}`);
+```
+| Console Output |
+|:-|
+| 0 a |
+| 1 b |
+| 2 c |
+
+The **Optional Chaining Operator** `?` checks if a property exists.  
+It saves the effort of making `if` blocks.
+```js
+const restaurant = {
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  }
+};
+// this checks if the 'mon' property exists
+console.log(restaurant.openingHours.mon?.open);
+// this checks if the 'openingHours' property exists
+console.log(restaurant.openingHours?.mon?.open);
+```
+Console Output |
+|:-|
+| undefined |
+| undefined |
+
+The **optional chaining** `?` *(does the value/property exist)* &  
+the **nullish coalescing operator** `??` *(returns first non-null)*  
+were implemented at the same time, so they work well together.
+```js
+...
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+// For Loop
+for(const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+
+// Arrays
+const users = [
+  {name: 'J', email: 'agent@j.com'}
+];
+console.log(users[0]?.name ?? 'User array empty');
+```
+| Console Output |
+|:-|
+| On mon, we open at closed |
+| On tue, we open at closed |
+| On wed, we open at closed |
+| On thu, we open at 12 |
+| On fri, we open at 11 |
+| On sat, we open at 0 |
+| On sun, we open at closed |
+| Method does not exist |
+| J |
+
+A **set** is a collection of unique values, meaning do duplicates.  
+`.add()`, `.has()`, `.delete()`, `.size()` and `.clear()` are some common Set methods.
+```js
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+
+console.log(ordersSet)
+console.log('John');
+```
+| Console Output |
+|:-|
+| Set(3) {"Pasta", "Pizza", "Risotto"} |
+| Set(4) {"J", "o", "h", "n"} |
+
+A **map** can be used to map values to keys, but in this case the keys can be of any type.
+```js
+const rest = new Map();
+rest.set('name', 'Bond');
+console.log(rest);
+```
+| Console Output |
+|:-|
+| Map(1) {"name" => "Bond"} |
+
+### Sources of Data
+
+1. From the program itself:
+    * Data written directly into source code *(e.g. status messages)*.
+2. Form the UI:
+    * Data input from the user or data written in DOM *(e.g. tasks in todo app)*.
+3. From external sources:
+    * Data fetched for example from web API *(e.g. recipe objects)*.
+
+Collections of data are stored in **Data Structures**.
+
+**Arrays** vs **Sets**:
+| Arrays | Sets |
+|:-|:-|
+| **Ordered** list of values are needed | **Unique** values are needed |
+| Data **manipulation** is needed | If **high-performance** is needed |
+|  | **Removal of duplicates** is needed |
+
+**Objects** vs **Maps**:
+| Objects | Maps |
+|:-|:-|
+| More 'traditional' key/value store ('abused' objects) | Better performance |
+| Easier to write and access values with `.` & `[]` | Keys can have any data type |
+|  | Easier to iterate |
+|  | Easy to compute size |
+
+# Section 10 | A Closer Look at Functions
+
+JavaScript does not have passing by reference, only passing by value.
+
+# Section 14 | Object-Oriented Programming (OOP) With JavaScript
+
+There are 2 major **paradigms** in JavaScript:
+1. **Functional Programming**
+2. **Object-Oriented Programming**
+
+Object-Oriented Programming:
+* **OOP** is a programming paradigm that is based on the concepts of objects.
+* Objects can be used to model real-world or abstract features.
+* Objects may contain data *(properties)* and code *(methods)*.
+  * All the data and corresponding behavior is packed into one block.
+* Objects are self-contained pieces/blocks of code.
+* Objects are building blocks of apps, and interact with one another.
+  * These interactions happen through a **public interface (API)**: methods that the code outside of the object can access and use to communicate with the object.
+* OOP's goal is code organization, flexibility and maintainability.
+
+A **Class** is a blueprint for objects.  
+JavaScript does **NOT** support real classes.  
+A class can be used to create multiple instances of objects.
+
+4 Fundamental OOP Principles:
+1. Abstraction
+    * Ignoring or hiding details that don't matter.
+2. Encapsulation
+    * To keep some properties and methods private.
+    * Some methods can be exposed which is called an **API**.
+    * Prevents external code from manipulating internal state. 
+    * The term **'state'** refers to an object's data.
+3. Inheritance
+    * Makes all properties and methods available to a child class.
+4. Polymorphism
+    * A child class can override a method that it inherited from a parent class.
+
+Objects (instances) are **instantiated** from a class.  
+All objects are linked to a prototype object. This is called prototypal inheritance.
+
+**Constructor** Functions
+* Can create objects from a function.  
+* This is how built-in objects like Arrays, Maps or Sets are actually implemented.
+
+**ES6 Classes**
+* Modern alternative to constructor function syntax.
+* Work exactly like constructor functions.
+* Do **NOT** behave like classes in classical OOP.
+
+**`Object.create()`**
+* The easiest and most straightforward way of linking an object to a prototype object.
+
+Never create a method inside a constructor function,  
+because each object created will carry around that function,  
+and that degrades the performance of the code.
