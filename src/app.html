@@ -6,8 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     %sveltekit.head%
   </head>
-  <style></style>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents">%sveltekit.body%</div>
   </body>
+  <script>
+    const skillsWrapperTarget =
+      document.getElementsByClassName('skills-wrapper');
+    Array.from(skillsWrapperTarget).forEach((targetElement) => {
+      targetElement.addEventListener('wheel', (event) => {
+        targetElement.classList.add('highlight');
+        setTimeout(() => {
+          targetElement.classList.remove('highlight');
+        }, 500);
+      });
+    });
+
+    const certsWrapperTarget = document.getElementsByClassName('certs-wrapper');
+    Array.from(certsWrapperTarget).forEach((targetElement) => {
+      targetElement.addEventListener('wheel', (event) => {
+        targetElement.classList.add('highlight');
+        setTimeout(() => {
+          targetElement.classList.remove('highlight');
+        }, 500);
+      });
+    });
+  </script>
 </html>

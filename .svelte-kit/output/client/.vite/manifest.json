@@ -1,12 +1,12 @@
 {
   ".svelte-kit/generated/client-optimized/app.js": {
-    "file": "_app/immutable/entry/app.NKY5vknd.js",
+    "file": "_app/immutable/entry/app.BUGY_bgg.js",
     "name": "entry/app",
     "src": ".svelte-kit/generated/client-optimized/app.js",
     "isEntry": true,
     "imports": [
-      "_scheduler.DTOClJAy.js",
-      "_index.3e9ivkJs.js"
+      "_scheduler.eJV6ods6.js",
+      "_index.CUoEoFqd.js"
     ],
     "dynamicImports": [
       ".svelte-kit/generated/client-optimized/nodes/0.js",
@@ -15,67 +15,99 @@
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/0.js": {
-    "file": "_app/immutable/nodes/0.7_0ahtti.js",
+    "file": "_app/immutable/nodes/0.DJk4LxJr.js",
     "name": "nodes/0",
     "src": ".svelte-kit/generated/client-optimized/nodes/0.js",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_scheduler.DTOClJAy.js",
-      "_index.3e9ivkJs.js"
+      "_scheduler.eJV6ods6.js",
+      "_index.CUoEoFqd.js"
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/1.js": {
-    "file": "_app/immutable/nodes/1.CdMZYCPn.js",
+    "file": "_app/immutable/nodes/1.DKbEZmic.js",
     "name": "nodes/1",
     "src": ".svelte-kit/generated/client-optimized/nodes/1.js",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_scheduler.DTOClJAy.js",
-      "_index.3e9ivkJs.js",
-      "_entry.CxBxfMo4.js"
+      "_scheduler.eJV6ods6.js",
+      "_index.CUoEoFqd.js",
+      "_entry.DugRkZ9B.js"
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/2.js": {
-    "file": "_app/immutable/nodes/2.GYyNB9SX.js",
+    "file": "_app/immutable/nodes/2.CwIoryb8.js",
     "name": "nodes/2",
     "src": ".svelte-kit/generated/client-optimized/nodes/2.js",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_scheduler.DTOClJAy.js",
-      "_index.3e9ivkJs.js"
+      "_scheduler.eJV6ods6.js",
+      "_index.CUoEoFqd.js"
     ],
     "css": [
-      "_app/immutable/assets/2.CBABqsZ0.css"
+      "_app/immutable/assets/2.C1G4yYyM.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/badge-aws-cloud-practitioner.Bf_gp8J8.png",
+      "_app/immutable/assets/badge-acronis-cloud-tech-fundamentals.BFglCGwx.png",
+      "_app/immutable/assets/badge-salt-security.DJruEzBS.png",
+      "_app/immutable/assets/badge-zerto-certified-associate.BcGGylc4.png",
+      "_app/immutable/assets/badge-zerto-enterprise-engineer.DfITNTid.png",
+      "_app/immutable/assets/me.C1_NMoIA.jpg"
     ]
   },
-  "_entry.CxBxfMo4.js": {
-    "file": "_app/immutable/chunks/entry.CxBxfMo4.js",
+  "_entry.DugRkZ9B.js": {
+    "file": "_app/immutable/chunks/entry.DugRkZ9B.js",
     "name": "entry",
     "imports": [
-      "_scheduler.DTOClJAy.js"
+      "_scheduler.eJV6ods6.js"
     ]
   },
-  "_index.3e9ivkJs.js": {
-    "file": "_app/immutable/chunks/index.3e9ivkJs.js",
+  "_index.CUoEoFqd.js": {
+    "file": "_app/immutable/chunks/index.CUoEoFqd.js",
     "name": "index",
     "imports": [
-      "_scheduler.DTOClJAy.js"
+      "_scheduler.eJV6ods6.js"
     ]
   },
-  "_scheduler.DTOClJAy.js": {
-    "file": "_app/immutable/chunks/scheduler.DTOClJAy.js",
+  "_scheduler.eJV6ods6.js": {
+    "file": "_app/immutable/chunks/scheduler.eJV6ods6.js",
     "name": "scheduler"
   },
   "node_modules/@sveltejs/kit/src/runtime/client/entry.js": {
-    "file": "_app/immutable/entry/start.BeTo6ynz.js",
+    "file": "_app/immutable/entry/start.B6dMOj3q.js",
     "name": "entry/start",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/entry.js",
     "isEntry": true,
     "imports": [
-      "_entry.CxBxfMo4.js"
+      "_entry.DugRkZ9B.js"
     ]
+  },
+  "src/lib/assets/badge-acronis-cloud-tech-fundamentals.png": {
+    "file": "_app/immutable/assets/badge-acronis-cloud-tech-fundamentals.BFglCGwx.png",
+    "src": "src/lib/assets/badge-acronis-cloud-tech-fundamentals.png"
+  },
+  "src/lib/assets/badge-aws-cloud-practitioner.png": {
+    "file": "_app/immutable/assets/badge-aws-cloud-practitioner.Bf_gp8J8.png",
+    "src": "src/lib/assets/badge-aws-cloud-practitioner.png"
+  },
+  "src/lib/assets/badge-salt-security.png": {
+    "file": "_app/immutable/assets/badge-salt-security.DJruEzBS.png",
+    "src": "src/lib/assets/badge-salt-security.png"
+  },
+  "src/lib/assets/badge-zerto-certified-associate.png": {
+    "file": "_app/immutable/assets/badge-zerto-certified-associate.BcGGylc4.png",
+    "src": "src/lib/assets/badge-zerto-certified-associate.png"
+  },
+  "src/lib/assets/badge-zerto-enterprise-engineer.png": {
+    "file": "_app/immutable/assets/badge-zerto-enterprise-engineer.DfITNTid.png",
+    "src": "src/lib/assets/badge-zerto-enterprise-engineer.png"
+  },
+  "src/lib/assets/me.jpg": {
+    "file": "_app/immutable/assets/me.C1_NMoIA.jpg",
+    "src": "src/lib/assets/me.jpg"
   }
 }

@@ -77,8 +77,8 @@ declare module '$env/static/private' {
 	export const PWD: string;
 	export const JAVA_HOME: string;
 	export const npm_execpath: string;
-	export const _P9K_TTY: string;
 	export const NVM_CD_FLAGS: string;
+	export const _P9K_TTY: string;
 	export const npm_config_global_prefix: string;
 	export const npm_command: string;
 	export const HOSTTYPE: string;
@@ -87,6 +87,7 @@ declare module '$env/static/private' {
 	export const INIT_CWD: string;
 	export const EDITOR: string;
 	export const NODE_ENV: string;
+	export const VIPSHOME: string;
 }
 
 /**
@@ -169,8 +170,8 @@ declare module '$env/dynamic/private' {
 		PWD: string;
 		JAVA_HOME: string;
 		npm_execpath: string;
-		_P9K_TTY: string;
 		NVM_CD_FLAGS: string;
+		_P9K_TTY: string;
 		npm_config_global_prefix: string;
 		npm_command: string;
 		HOSTTYPE: string;
@@ -179,6 +180,7 @@ declare module '$env/dynamic/private' {
 		INIT_CWD: string;
 		EDITOR: string;
 		NODE_ENV: string;
+		VIPSHOME: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
