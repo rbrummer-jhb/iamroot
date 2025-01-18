@@ -5,4 +5,4 @@ _site
 vendor
 node_modules/
 .svelte-kit/
-/build/
+build/
