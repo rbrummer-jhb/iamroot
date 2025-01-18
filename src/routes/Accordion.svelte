@@ -74,6 +74,7 @@
     padding: 5px;
     border-radius: 4px;
     transition: filter 0.3s ease-in-out, background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+    cursor: pointer;
   }
 
   button:hover {

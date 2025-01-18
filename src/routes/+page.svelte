@@ -37,6 +37,9 @@
   import SkillIconsCs from '~icons/skill-icons/cs';
 
   import SkillIconsTerraformDark from '~icons/skill-icons/terraform-dark';
+  import SkillIconsGitlabDark from '~icons/skill-icons/gitlab-dark';
+  import SkillIconsGithubDark from '~icons/skill-icons/github-dark';
+  import SkillIconsAzureDark from '~icons/skill-icons/azure-dark'
   import SkillIconsAwsDark from '~icons/skill-icons/aws-dark';
   import SkillIconsDocker from '~icons/skill-icons/docker';
   import SkillIconsKubernetes from '~icons/skill-icons/kubernetes';
@@ -122,10 +125,11 @@
       building with technology and automation. I often spend my time reading on daily.dev, taking my bike for
       a ride, lifting weights, rock climbing, playing the occasional video game, or learning something new
       in the tech space.<br><br>
-      I started out as a freelance graphic designer. I later applied at WeThinkCode_ where I attained a higher
-      certificate as a full-stack developer. I did an internship at BBD as a frontend developer and worked for
-      Elements.Cloud as a backend developer. I later moved into the cloud space at +OneX where I am
-      currently working as a DevOps Engineer with both private and public cloud platforms.<br><br>
+      I started out as a freelance graphic designer. I later applied at <a href="https://wethinkcode.co.za/">WeThinkCode_</a> where I attained a higher
+      certificate as a full-stack developer. I did an internship at <a href="https://bbdsoftware.com/">BBD</a> as a frontend developer and worked for
+      <a href="https://elements.cloud/">Elements.Cloud</a> as a backend developer. I later moved into the cloud space at <a href="https://www.plusonex.com/">+OneX</a> where I
+      worked as a DevOps Engineer with both private and public cloud platforms. I am currently working as a
+      DevOps engineer predominantly in Azure at <a href="https://codehesion.co.za/">Codehesion</a>.<br><br>
       I believe the experiences I've described below have given me a diverse skill set in various professions with which I can add value and offer insights.<br><br>
       I operate very well in an environment where there is: mutual respect, knowledge sharing, teamwork, constructive criticism, well structured processes and a good sense of humour.
     </p>
@@ -135,12 +139,12 @@
       3 <IcRoundStar/> I've used this in a few projects.<br>
       4 <IcRoundStar/> I've used this in <strong>many</strong> projects.<br>
       5 <IcRoundStar/> I use this every day. </p>
-      <p>Use <span class="tip-shortcut">shift + scroll</span> or <span class="tip-shortcut">swipe left/right</span> with 2 fingers to move horizontally.</p>
+      <p>Use <span class="tip-shortcut">shift + scroll</span> or <span class="tip-shortcut">swipe left/right</span> with 2 fingers on the trackpad to move horizontally.</p>
     <h2><IcBaselineDesignServices /> Designer</h2>
     <div class="skills-wrapper">
       <div class="skill-tile">
-        <h3>Figma</h3>
         <h3><SkillIconsFigmaDark /></h3>
+        <h3>Figma</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -150,8 +154,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Illustrator</h3>
         <h3><SkillIconsIllustrator /></h3>
+        <h3>Illustrator</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -161,8 +165,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Photoshop</h3>
         <h3><SkillIconsPhotoshop /></h3>
+        <h3>Photoshop</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -172,8 +176,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>After Effects</h3>
         <h3><SkillIconsAftereffects /></h3>
+        <h3>After Effects</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -187,8 +191,8 @@
     <h2><IcRoundCodeOff /> Developer</h2>
     <div class="skills-wrapper">
       <div class="skill-tile">
-        <h3>VS Code</h3>
         <h3><SkillIconsVscodeDark /></h3>
+        <h3>VS Code</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -198,8 +202,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>MongoDB</h3>
         <h3><SkillIconsMongodb /></h3>
+        <h3>MongoDB</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -209,8 +213,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Node.JS</h3>
         <h3><SkillIconsNodejsDark /></h3>
+        <h3>Node.JS</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -220,8 +224,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Angular</h3>
         <h3><SkillIconsAngularDark /></h3>
+        <h3>Angular</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -231,8 +235,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Java</h3>
         <h3><SkillIconsJavaDark /></h3>
+        <h3>Java</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -242,8 +246,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>JavaScript</h3>
         <h3><SkillIconsJavascript /></h3>
+        <h3>JavaScript</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -253,8 +257,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>TypeScript</h3>
         <h3><SkillIconsTypescript /></h3>
+        <h3>TypeScript</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -264,8 +268,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Python</h3>
         <h3><SkillIconsPythonDark /></h3>
+        <h3>Python</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -275,8 +279,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Git</h3>
         <h3><SkillIconsGit /></h3>
+        <h3>Git</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -286,8 +290,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Bootstrap</h3>
         <h3><SkillIconsBootstrap /></h3>
+        <h3>Bootstrap</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -297,8 +301,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>HTML</h3>
         <h3><SkillIconsHtml /></h3>
+        <h3>HTML</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -308,8 +312,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>CSS</h3>
         <h3><SkillIconsCss /></h3>
+        <h3>CSS</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -319,8 +323,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Flutter</h3>
         <h3><SkillIconsFlutterDark /></h3>
+        <h3>Flutter</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStarBorder/></p>
@@ -330,8 +334,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>React</h3>
         <h3><SkillIconsReactDark /></h3>
+        <h3>React</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -341,8 +345,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>C</h3>
         <h3><SkillIconsC /></h3>
+        <h3>C</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -352,8 +356,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>C#</h3>
         <h3><SkillIconsCs /></h3>
+        <h3>C#</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -367,8 +371,30 @@
     <h2><IcRoundMemory /> DevOps</h2>
     <div class="skills-wrapper">
       <div class="skill-tile">
-        <h3>Docker</h3>
+        <h3><SkillIconsAzureDark /></h3>
+        <h3>Azure</h3>
+        <div class="stars">
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+        </div>
+      </div>
+      <div class="skill-tile">
+        <h3><SkillIconsGitlabDark /></h3>
+        <h3>GitLab</h3>
+        <div class="stars">
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+          <p><IcRoundStarBorder/></p>
+        </div>
+      </div>
+      <div class="skill-tile">
         <h3><SkillIconsDocker /></h3>
+        <h3>Docker</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -378,8 +404,19 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Terraform</h3>
+        <h3><SkillIconsGithubDark /></h3>
+        <h3>GitHub</h3>
+        <div class="stars">
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+          <p><IcRoundStar/></p>
+          <p><IcRoundStarBorder/></p>
+        </div>
+      </div>
+      <div class="skill-tile">
         <h3><SkillIconsTerraformDark /></h3>
+        <h3>Terraform</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -389,8 +426,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>AWS</h3>
         <h3><SkillIconsAwsDark /></h3>
+        <h3>AWS</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -400,8 +437,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Kubernetes</h3>
         <h3><SkillIconsKubernetes /></h3>
+        <h3>Kubernetes</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -411,8 +448,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>GCP</h3>
         <h3><SkillIconsGcpDark /></h3>
+        <h3>GCP</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -422,8 +459,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>BitBucket</h3>
         <h3><SkillIconsBitbucketDark /></h3>
+        <h3>BitBucket</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -433,8 +470,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Linux (WSL)</h3>
         <h3><SkillIconsLinuxDark /></h3>
+        <h3>Linux (WSL)</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -444,8 +481,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Windows</h3>
         <h3><SkillIconsWindowsDark /></h3>
+        <h3>Windows</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -455,8 +492,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>PowerShell</h3>
         <h3><SkillIconsPowershellDark /></h3>
+        <h3>PowerShell</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -466,8 +503,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Postman</h3>
         <h3><SkillIconsPostman /></h3>
+        <h3>Postman</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -477,8 +514,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Redis</h3>
         <h3><SkillIconsRedisDark /></h3>
+        <h3>Redis</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -488,8 +525,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>CloudFlare</h3>
         <h3><SkillIconsCloudflareDark /></h3>
+        <h3>CloudFlare</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -499,8 +536,8 @@
         </div>
       </div>
       <div class="skill-tile">
-        <h3>Vim</h3>
         <h3><SkillIconsVimDark /></h3>
+        <h3>Vim</h3>
         <div class="stars">
           <p><IcRoundStar/></p>
           <p><IcRoundStar/></p>
@@ -607,12 +644,12 @@
     </div>
   </Accordion>
   <Accordion>
-    <span slot="head">+OneX / Cloud</span>
+    <span slot="head">+OneX</span>
     <div slot="details">
       <p>
         Profession: Cloud Engineer (junior - intermediate)
       </p>
-      <p>2023-01 - Current</p>
+      <p>2023-01 - 2024-09</p>
       <ul>
         <li>AWS</li>
         <li>Acronis</li>
@@ -632,6 +669,28 @@
       </p>
     </div>
   </Accordion>
+  <!-- <Accordion>
+    <span slot="head">Codehesion</span>
+    <div slot="details">
+      <p>
+        Profession: DevOps Engineer (intermediate)
+      </p>
+      <p>2024-09 - Current</p>
+      <ul>
+        <li>Azure</li>
+        <li>Azure Pipelines</li>
+        <li>Azure Repos</li>
+        <li>Kubernetes</li>
+        <li>GitLab</li>
+        <li>Jira</li>
+        <li>Terraform</li>
+        <li>Git</li>
+      </ul>
+      <p>
+        I was later absorbed into the cloud team. I started working with private cloud technologies and occasionally was also fortunate to do some design work, but my focus and efforts are more committed to our AWS clients namely KIA, XDS, CBI, TTRO and Reutech Communications. My tasks involved the implementation of the well-architected framework ensuring cost optimization, security, operational excellence, reliability, performance efficiency and sustainability. From a practical perspective this involved working closely with dev teams, deploying container workloads into AWS ECS with Terraform, autoscaling containers and instances, migrating workloads between accounts, architecting and building cloud solutions (EC2, ECR, ECS, ALB, RDS, ElastiCache, Backups, Governance), resolving billing issues, writing scripts with the AWS SDK, and maintaining the AWS environments.
+      </p>
+    </div>
+  </Accordion> -->
   <h1 id="hobbies">Hobbies</h1>
   <div class="hobbies-wrapper">
     <div class="hobbies-tile">

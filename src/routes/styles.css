@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 :root {
   --clr-primary: #ec7211;
@@ -112,6 +112,7 @@ h3 {
 
 .name-title h3 {
   text-align: center;
+  font-size: 1rem;
 }
 
 .blinking-cursor {
@@ -176,11 +177,11 @@ h1,
 h2,
 h3,
 p {
-  font-family: 'Ubuntu';
+  font-family: "Ubuntu";
 }
 
 .terminal-text {
-  font-family: 'Source Code Pro';
+  font-family: "Source Code Pro";
   font-size: 0.8rem;
   padding: 10px;
   border-radius: 5px;
@@ -196,6 +197,7 @@ p {
 .role-text {
   display: flex;
   justify-content: space-evenly;
+  font-size: 0.8rem;
 }
 
 .personal {
@@ -236,13 +238,13 @@ a {
 .tooltip {
   display: flex;
   position: absolute;
-  right: 130%; /* Position above the button */
+  right: 110%; /* Position above the button */
   top: 50%;
   transform: translateY(-50%);
   background: linear-gradient(
     to left,
     var(--clr-border-edge),
-    var(--clr-bg) 25%
+    var(--clr-bg) 50%
   );
   color: var(--clr-black);
   justify-content: center;
@@ -252,8 +254,8 @@ a {
   z-index: 1;
   opacity: 0;
   transition: opacity 0.5s background 0.5;
-  font-family: 'Ubuntu';
-  font-size: 1rem;
+  font-family: "Ubuntu";
+  font-size: 0.8rem;
   font-weight: bold;
   height: 30px;
   padding: 1rem;
@@ -320,11 +322,12 @@ a {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 2rem;
 }
 
 .name-title {
-  align-items: center;
   background-color: var(--clr-bg);
   border-top: 2px solid var(--clr-border-edge);
   border-radius: 4px;
@@ -332,12 +335,10 @@ a {
     rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
   box-sizing: border-box;
   color: var(--clr-black);
-  justify-content: center;
   padding: 2rem;
 }
 
 .picture-wrapper {
-  align-items: center;
   background-color: var(--clr-bg);
   border-top: 2px solid var(--clr-border-edge);
   border-radius: 4px;
@@ -347,7 +348,6 @@ a {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   color: var(--clr-black);
-  justify-content: center;
   overflow: hidden;
   position: relative;
   display: inline-block;
@@ -361,7 +361,7 @@ a {
 
 .picture-wrapper::after {
   position: absolute;
-  content: '';
+  content: "";
   height: 100%;
   width: 100%;
   top: 0;
@@ -371,6 +371,10 @@ a {
     var(--clr-secondary-alpha) 0%,
     var(--clr-primary-alpha) 100%
   );
+}
+
+.personal {
+  font-size: 0.8rem;
 }
 
 .about-content {
@@ -387,7 +391,8 @@ a {
 }
 
 .about-content h3 {
-  padding-left: 10px;
+  /* padding-left: 10px; */
+  margin-top: 0;
 }
 
 .about-content h1,
@@ -432,7 +437,7 @@ a {
 
 .about-content p {
   line-height: 1.5;
-  font-family: 'Oswald';
+  font-family: "Oswald";
   /* font-size: 1.2rem; */
 }
 
@@ -441,27 +446,21 @@ a {
   border-radius: 4px;
   background-color: var(--clr-black);
   color: var(--clr-bg);
-  font-family: 'Source Code Pro';
+  font-family: "Source Code Pro";
   font-size: 12px;
 }
 
 .skills-wrapper {
-  /* height: 400px; */
   border-left: 2px solid var(--clr-bg);
   border-right: 2px solid var(--clr-bg);
   border-radius: 4px;
-  overflow-x: auto;
+  overflow-y: hidden;
   display: flex;
   align-items: center;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   padding: 20px;
   transition: box-shadow 0.3s ease-in-out;
-}
-
-.skills-wrapper:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px inset,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px inset, #d6d6e7 0 -3px 0 inset;
 }
 
 .highlight {
@@ -475,17 +474,38 @@ a {
 }
 
 .skill-tile {
-  width: 200px;
-  background-color: var(--clr-terminal-bg);
+  width: 130px;
+  height: 120px;
+  /* background-color: var(--clr-terminal-bg); */
+  background-image: linear-gradient(
+    180deg,
+    var(--clr-terminal-bg),
+    var(--clr-bg)
+  );
   border-radius: 4px;
   margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 0 0 auto;
+  overflow: visible;
+}
+
+.skill-tile h3:first-of-type {
+  position: relative;
+  font-size: 2.5rem;
+  /* top: -20px; */
+  left: 0%;
+  transform: translateX(-0%) translateY(-30%);
+  margin: 0;
+  z-index: 1;
 }
 
 .stars {
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: center;
+  font-size: 0.8rem;
 }
 
 .stars p {
@@ -503,11 +523,6 @@ a {
   scrollbar-width: none; /* Firefox */
   padding: 20px;
   transition: box-shadow 0.3s ease-in-out;
-}
-
-.certs-wrapper:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px inset,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px inset, #d6d6e7 0 -3px 0 inset;
 }
 
 .cert-tile {
@@ -530,7 +545,7 @@ a {
   padding: 0;
   color: var(--clr-secondary);
   transition: filter 0.3s ease-in-out;
-  font-family: 'Ubuntu';
+  font-family: "Ubuntu";
 }
 .cert-tile a:hover {
   padding: 0;
@@ -543,7 +558,7 @@ a {
 }
 
 li {
-  font-family: 'Ubuntu';
+  font-family: "Ubuntu";
 }
 
 .hobbies-wrapper {
