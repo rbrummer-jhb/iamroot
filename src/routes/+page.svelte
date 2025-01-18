@@ -59,6 +59,8 @@
   import zertoBadge1 from "$lib/assets/badge-zerto-certified-associate.png";
   import zertoBadge2 from "$lib/assets/badge-zerto-enterprise-engineer.png";
   import csharpBasicsBadge from "$lib/assets/badge-csharp-basics.jpg";
+  import k8sBadge from "$lib/assets/badge-k8s.png"
+  import gitopsBadge from "$lib/assets/badge-gitops.png"
 
   import Accordion from './Accordion.svelte';
 
@@ -578,6 +580,16 @@
       <img src={csharpBasicsBadge} alt="badge-csharp-basics" class="cert-img">
       <p>C# Basics for Beginners</p>
       <a href="https://ude.my/UC-0bf98713-cc21-4643-879e-e036afd9fcee" target="blank">Source</a>
+    </div>
+    <div class="cert-tile">
+      <img src={k8sBadge} alt="badge-intro-to-kubernetes" class="cert-img">
+      <p>Introduction to Kubernetes</p>
+      <a href="https://www.credly.com/badges/a9edc285-20f1-4f5d-86ba-c88896a52627/public_url" target="blank">Source</a>
+    </div>
+    <div class="cert-tile">
+      <img src={gitopsBadge} alt="badge-csharp-basics" class="cert-img">
+      <p>Introduction to GitOps</p>
+      <a href="https://www.credly.com/badges/a7feb9ae-474e-4a15-abdb-3b67213d9040/public_url" target="blank">Source</a>
     </div>
   </div>
   <h1 id="experience">Experience</h1>
