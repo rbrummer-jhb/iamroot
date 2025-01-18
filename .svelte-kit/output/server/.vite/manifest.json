@@ -16,27 +16,33 @@
     "file": "chunks/internal.js",
     "name": "internal",
     "imports": [
-      "_ssr.js"
+      "_ssr.js",
+      "_ssr2.js"
     ]
   },
   "_ssr.js": {
     "file": "chunks/ssr.js",
     "name": "ssr"
   },
-  "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
+  "_ssr2.js": {
+    "file": "chunks/ssr2.js",
+    "name": "ssr"
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-4/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
     "name": "entries/fallbacks/error.svelte",
-    "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-4/error.svelte",
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_exports.js"
+      "_exports.js",
+      "_ssr2.js"
     ]
   },
-  "node_modules/@sveltejs/kit/src/runtime/components/layout.svelte": {
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-4/layout.svelte": {
     "file": "entries/fallbacks/layout.svelte.js",
     "name": "entries/fallbacks/layout.svelte",
-    "src": "node_modules/@sveltejs/kit/src/runtime/components/layout.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-4/layout.svelte",
     "isEntry": true,
     "imports": [
       "_ssr.js"
@@ -60,6 +66,10 @@
   "src/lib/assets/badge-aws-cloud-practitioner.png": {
     "file": "_app/immutable/assets/badge-aws-cloud-practitioner.Bf_gp8J8.png",
     "src": "src/lib/assets/badge-aws-cloud-practitioner.png"
+  },
+  "src/lib/assets/badge-csharp-basics.jpg": {
+    "file": "_app/immutable/assets/badge-csharp-basics.bjJLvFR0.jpg",
+    "src": "src/lib/assets/badge-csharp-basics.jpg"
   },
   "src/lib/assets/badge-salt-security.png": {
     "file": "_app/immutable/assets/badge-salt-security.DJruEzBS.png",
@@ -98,7 +108,7 @@
       "_ssr.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.C1G4yYyM.css"
+      "_app/immutable/assets/_page.DjA9f1RN.css"
     ],
     "assets": [
       "_app/immutable/assets/badge-aws-cloud-practitioner.Bf_gp8J8.png",
@@ -106,6 +116,7 @@
       "_app/immutable/assets/badge-salt-security.DJruEzBS.png",
       "_app/immutable/assets/badge-zerto-certified-associate.BcGGylc4.png",
       "_app/immutable/assets/badge-zerto-enterprise-engineer.DfITNTid.png",
+      "_app/immutable/assets/badge-csharp-basics.bjJLvFR0.jpg",
       "_app/immutable/assets/me.C1_NMoIA.jpg"
     ]
   }
