@@ -575,26 +575,21 @@ li {
 }
 
 .hobbies-wrapper {
-  border-left: 2px solid var(--clr-bg);
-  border-right: 2px solid var(--clr-bg);
-  border-radius: 4px;
-  /* display: flex;
-  flex-wrap: wrap; */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  justify-content: space-evenly;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: column;
   padding: 20px;
   gap: 1rem;
 }
 
 .hobbies-tile {
-  background-color: var(--clr-border-edge);
-  border-left: 3px solid var(--clr-border);
-  border-radius: 4px;
-  padding: 20px;
-  flex: 1;
+  /* background-color: var(--clr-border-edge); */
+  background: linear-gradient(
+    to top,
+    var(--clr-border-edge),
+    var(--clr-bg) 70%
+  );
+  border-radius: 5px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -605,7 +600,32 @@ li {
 }
 
 .hobbies-icon {
-  font-size: 2rem;
+  font-size: 3rem;
+  margin: 30px;
+}
+
+#game {
+  background: linear-gradient(to top, #5e4a991e, var(--clr-bg) 70%);
+}
+
+#weights {
+  background: linear-gradient(to top, #efab2e1e, var(--clr-bg) 70%);
+}
+
+#read {
+  background: linear-gradient(to top, #44b3f41e, var(--clr-bg) 70%);
+}
+
+#bike {
+  background: linear-gradient(to top, #fc6c4c1e, var(--clr-bg) 70%);
+}
+
+#bike {
+  background: linear-gradient(to top, #fc6c4c1e, var(--clr-bg) 70%);
+}
+
+#radio {
+  background: linear-gradient(to top, #5e48741e, var(--clr-bg) 70%);
 }
 
 @media all and (max-width: 1440px) {

@@ -64,12 +64,11 @@
 
   import Accordion from './Accordion.svelte';
 
-  import IcBaselineSportsHandball from '~icons/ic/baseline-sports-handball';
-  import IcBaselineDirectionsBike from '~icons/ic/baseline-directions-bike';
-  import IcRoundMenuBook from '~icons/ic/round-menu-book';
-  import IcRoundAccessibilityNew from '~icons/ic/round-accessibility-new';
-  import IcRoundSportsEsports from '~icons/ic/round-sports-esports';
-  import IcBaselineRadio from '~icons/ic/baseline-radio';
+  import FluentEmojiVideoGame from '~icons/fluent-emoji/video-game';
+  import FluentEmojiManLiftingWeights from '~icons/fluent-emoji/man-lifting-weights';
+  import FluentEmojiOpenBook from '~icons/fluent-emoji/open-book';
+  import FluentEmojiMotorcycle from '~icons/fluent-emoji/motorcycle';
+  import FluentEmojiRadio from '~icons/fluent-emoji/radio';
   import IcBaselineWork from '~icons/ic/baseline-work';
 
   import profilePicture from "$lib/assets/me.jpg";
@@ -705,28 +704,24 @@
   </Accordion> -->
   <h1 id="hobbies">Hobbies</h1>
   <div class="hobbies-wrapper">
-    <div class="hobbies-tile">
-      <p class="hobbies-icon"><IcBaselineSportsHandball /></p>
-      <p>Climbing</p>
-    </div>
-    <div class="hobbies-tile">
-      <p class="hobbies-icon"><IcRoundSportsEsports /></p>
+    <div class="hobbies-tile" id="game">
+      <p class="hobbies-icon"><FluentEmojiVideoGame /></p>
       <p>Gaming</p>
     </div>
-    <div class="hobbies-tile">
-      <p class="hobbies-icon"><IcRoundAccessibilityNew /></p>
+    <div class="hobbies-tile" id="weights">
       <p>Weights</p>
+      <p class="hobbies-icon"><FluentEmojiManLiftingWeights /></p>
     </div>
-    <div class="hobbies-tile">
-      <p class="hobbies-icon"><IcRoundMenuBook /></p>
+    <div class="hobbies-tile" id="read">
+      <p class="hobbies-icon"><FluentEmojiOpenBook /></p>
       <p>Reading</p>
     </div>
-    <div class="hobbies-tile">
-      <p class="hobbies-icon"><IcBaselineDirectionsBike /></p>
+    <div class="hobbies-tile" id="bike">
       <p>Cruising</p>
+      <p class="hobbies-icon"><FluentEmojiMotorcycle /></p>
     </div>
-    <div class="hobbies-tile">
-      <p class="hobbies-icon"><IcBaselineRadio /></p>
+    <div class="hobbies-tile" id="radio">
+      <p class="hobbies-icon"><FluentEmojiRadio /></p>
       <p>Music</p>
     </div>
   </div>
