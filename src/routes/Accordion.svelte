@@ -49,9 +49,9 @@
 	}
   
   div.header:hover button {
-    filter: drop-shadow(0px 0px 5px var(--clr-secondary));
     border: 1px solid var(--clr-secondary);
-    background-color: var(--clr-secondary-alpha-2);
+    background-color: var(--clr-terminal-bg);
+    color: white;
   }
   
 	div.header .text {
@@ -63,7 +63,11 @@
 	
 	div.details {
     /* width:90%; */
-    background-color: var(--clr-terminal-bg);
+    background-image: linear-gradient(
+    0deg,
+    var(--clr-terminal-bg),
+    var(--clr-bg)
+  );
 		padding:1rem;
     border-radius: 4px;
 	}
@@ -71,16 +75,10 @@
   button {
     background-color: var(--clr-terminal-bg);
     border: 1px solid var(--clr-terminal-bg);
-    padding: 5px;
-    border-radius: 4px;
+    padding: 7px;
+    border-radius: 5px;
     transition: filter 0.3s ease-in-out, background-color 0.3s ease-in-out, border 0.3s ease-in-out;
     cursor: pointer;
-  }
-
-  button:hover {
-    filter: drop-shadow(0px 0px 5px var(--clr-secondary));
-    border: 1px solid var(--clr-secondary);
-    background-color: var(--clr-secondary-alpha-2);
   }
 
   @media all and (max-width: 768px) {
