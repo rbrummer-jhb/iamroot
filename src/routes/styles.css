@@ -353,6 +353,7 @@ a {
   overflow: hidden;
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 
 .picture-wrapper img {
