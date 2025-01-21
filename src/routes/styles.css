@@ -337,6 +337,7 @@ a {
   box-sizing: border-box;
   color: var(--clr-black);
   padding: 2rem;
+  width: 100%;
 }
 
 .picture-wrapper {
@@ -580,6 +581,7 @@ a {
 .cert-img {
   width: auto;
   height: 100px;
+  border-radius: 5px;
 }
 
 li {
